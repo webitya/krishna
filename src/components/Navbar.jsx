@@ -53,7 +53,7 @@ export default function Navbar() {
                   alt="श्री राधा वल्लभ लाल"
                   width={48}
                   height={48}
-                  className="object-contain pt-3"
+                  className="object-contain pt-2"
                   priority
                 />
               </div>
