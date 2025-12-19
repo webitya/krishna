@@ -3,68 +3,13 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Star, ArrowRight, Sun, BookOpen, Music } from "lucide-react";
+import HeroCarousel from "@/components/HeroCarousel";
 
 export default function Home() {
   return (
-    <div className="flex flex-col w-full bg-white text-black">
-      {/* Hero Section */}
-      <section className="relative w-full h-screen flex items-center justify-center overflow-hidden bg-white">
-        {/* Background Overlay */}
-        <div className="absolute inset-0 bg-[#FF9933]/5 z-10"></div>
-        {/* Placeholder for Devotional Image */}
-
-        {/* Animated Background Element (Saffron Glow) */}
-        <motion.div
-          animate={{ opacity: [0.2, 0.4, 0.2], scale: [1, 1.1, 1] }}
-          transition={{ duration: 6, repeat: Infinity }}
-          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#FF9933]/10 rounded-full blur-[100px] z-0"
-        />
-
-        <div className="container relative z-30 mx-auto px-6 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <span className="inline-block py-2 px-4 border border-[#FF9933] text-[#FF9933] text-sm font-serif tracking-[0.2em] uppercase mb-6 bg-white">
-              Shri Dham Vrindavan
-            </span>
-          </motion.div>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-5xl md:text-7xl font-bold font-serif text-black mb-8 leading-tight"
-          >
-            Eternal Grace & <br />
-            <span className="text-[#FF9933]">Divine Love</span>
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto mb-12 font-serif italic"
-          >
-            "Immerse yourself in the sacred nectar of devotion. Experience the tranquility of the ancient path."
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-6"
-          >
-            <button className="px-10 py-4 bg-[#FF9933] text-black font-bold text-lg rounded-sm hover:bg-white hover:text-[#FF9933] border border-[#FF9933] transition-all duration-300 shadow-[0_0_20px_rgba(255,153,51,0.2)]">
-              Daily Darshan
-            </button>
-            <button className="px-10 py-4 border border-black text-black font-bold text-lg rounded-sm hover:bg-black hover:text-white transition-colors">
-              Upcoming Events
-            </button>
-          </motion.div>
-        </div>
-      </section>
+    <div className="flex flex-col w-full bg-white text-black pt-16 md:pt-14">
+      {/* Hero Carousel Section */}
+      <HeroCarousel />
 
       {/* Featured Section - Temple Grid */}
       <section className="py-24 bg-white relative">

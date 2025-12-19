@@ -2,12 +2,15 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,56 +21,83 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: "Home", href: "/" },
-    { name: "About Jai Jai Shri", href: "/about-jai-jai" },
-    { name: "Hit Sahitya", href: "/hit-shahitya" },
-    { name: "Padawali", href: "/padawali" },
-    { name: "Vanshawali", href: "/vanshawali" },
-    { name: "Sewa Manorath", href: "/sewa-manorath" },
-    { name: "Braj Hit Sharnam", href: "/braj-hit-sharnam" }, // Interpreting "Braj Hit Sharnam Logo" as the link name
-    { name: "Gallery", href: "/gallery" },
-    { name: "Contact Us", href: "/contact" },
+    { name: "HOME", href: "/" },
+    { name: "ABOUT JAI JAI SHRI", href: "/about-jai-jai" },
+    { name: "HIT SAHITYA", href: "/hit-shahitya" },
+    { name: "PADAWALI", href: "/padawali" },
+    { name: "VANSHAWALI", href: "/vanshawali" },
+    { name: "SEWA MANORATH", href: "/sewa-manorath" },
+    { name: "BRAJ HIT SHARNAM", href: "/braj-hit-sharnam" },
+    { name: "GALLERY", href: "/gallery" },
+    { name: "CONTACT US", href: "/contact" },
   ];
 
   return (
-    <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-        ? "bg-[#FF9933] shadow-lg py-2 border-b border-black/10"
-        : "bg-[#FF9933] py-4"
-        }`}
-    >
-      <div className="container mx-auto px-6 flex items-center justify-between">
-        {/* Logo */}
-        <Link href="/" className="text-2xl font-bold font-serif tracking-wide text-black">
-          <span className="text-white drop-shadow-md">श्री</span> राधा वल्लभ लाल
-        </Link>
-
-        {/* Desktop Navigation */}
-        <div className="hidden xl:flex items-center space-x-6">
-          {navLinks.map((link) => (
-            <Link
-              key={link.name}
-              href={link.href}
-              className="text-black/80 hover:text-white transition-colors duration-300 font-bold text-sm tracking-wide uppercase relative group"
-            >
-              {link.name}
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full" />
+    <>
+      <motion.nav
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
+          ? "bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-400 shadow-lg py-2"
+          : "bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-400 py-3"
+          }`}
+      >
+        <div className="container mx-auto px-4">
+          <div className="flex items-center justify-between">
+            {/* Logo Section - Compact */}
+            <Link href="/" className="flex items-center gap-2 md:gap-3 group">
+              <div className="relative w-10 h-10 md:w-12 md:h-12 rounded-full overflow-hidden ring-2 ring-white shadow-lg bg-yellow-400 flex-shrink-0">
+                <Image
+                  src="/logo.png"
+                  alt="श्री राधा वल्लभ लाल"
+                  width={48}
+                  height={48}
+                  className="object-contain pt-3"
+                  priority
+                />
+              </div>
+              <div className="flex flex-col">
+                <span className="text-base md:text-lg lg:text-xl font-bold text-yellow-900 leading-tight whitespace-nowrap">
+                  श्री राधा वल्लभ लाल
+                </span>
+                <span className="text-[10px] md:text-xs text-yellow-800 font-medium uppercase tracking-wide hidden sm:block">
+                  Shri Radha Vallabh Lal
+                </span>
+              </div>
             </Link>
-          ))}
+
+            {/* Desktop Navigation - Compact */}
+            <div className="hidden lg:flex items-center gap-1">
+              {navLinks.map((link) => {
+                const isActive = pathname === link.href;
+                return (
+                  <Link
+                    key={link.name}
+                    href={link.href}
+                    className={`px-3 py-2 text-xs font-bold tracking-wide transition-all duration-200 rounded ${isActive
+                      ? "bg-white text-yellow-600 shadow-md"
+                      : "text-yellow-900 hover:bg-white/30 hover:text-yellow-800"
+                      }`}
+                  >
+                    {link.name}
+                  </Link>
+                );
+              })}
+            </div>
+
+            {/* Mobile Menu Button */}
+            <button
+              className="lg:hidden bg-white text-yellow-600 p-2 rounded-lg shadow-md hover:shadow-lg transition-all"
+              onClick={() => setIsMobileMenuOpen(true)}
+            >
+              <Menu size={20} strokeWidth={2.5} />
+            </button>
+          </div>
         </div>
+      </motion.nav>
 
-        {/* Mobile Menu Button */}
-        <button
-          className="xl:hidden text-black"
-          onClick={() => setIsMobileMenuOpen(true)}
-        >
-          <Menu size={28} />
-        </button>
-      </div>
-
-      {/* Mobile Navigation Drawer (Right to Left) */}
+      {/* Mobile Navigation Drawer - Compact */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <>
@@ -77,41 +107,78 @@ export default function Navbar() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsMobileMenuOpen(false)}
-              className="fixed inset-0 bg-black/50 z-40"
+              className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40"
             />
+
             {/* Drawer */}
             <motion.div
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
-              transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="fixed top-0 right-0 h-full w-[80%] max-w-sm bg-[#FF9933] z-50 shadow-2xl overflow-y-auto"
+              transition={{ type: "spring", damping: 30, stiffness: 300 }}
+              className="fixed top-0 right-0 h-full w-[280px] bg-gradient-to-b from-yellow-400 via-yellow-300 to-yellow-400 z-50 shadow-2xl"
             >
-              <div className="p-6">
+              <div className="p-4 h-full overflow-y-auto flex flex-col">
+                {/* Close Button */}
                 <button
-                  className="absolute top-6 right-6 text-black hover:text-white transition-colors"
+                  className="self-end bg-white text-yellow-600 p-2 rounded-lg shadow-md mb-4"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  <X size={28} />
+                  <X size={20} strokeWidth={2.5} />
                 </button>
 
-                <div className="mt-12 flex flex-col space-y-6">
-                  {navLinks.map((link) => (
-                    <Link
-                      key={link.name}
-                      href={link.href}
-                      onClick={() => setIsMobileMenuOpen(false)}
-                      className="text-black font-bold text-xl border-b border-black/10 pb-2 hover:text-white transition-colors"
-                    >
-                      {link.name}
-                    </Link>
-                  ))}
+                {/* Logo */}
+                <div className="flex items-center gap-3 mb-6 pb-4 border-b border-yellow-500/30">
+                  <div className="w-12 h-12 rounded-full overflow-hidden ring-2 ring-white shadow-lg bg-yellow-50">
+                    <Image
+                      src="/logo.png"
+                      alt="Logo"
+                      width={48}
+                      height={48}
+                      className="object-contain p-1"
+                    />
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="text-base font-bold text-yellow-900 leading-tight">
+                      श्री राधा वल्लभ लाल
+                    </span>
+                    <span className="text-[10px] text-yellow-800 font-medium uppercase tracking-wide">
+                      Shri Radha Vallabh Lal
+                    </span>
+                  </div>
+                </div>
+
+                {/* Navigation Links */}
+                <nav className="flex-1 space-y-1">
+                  {navLinks.map((link) => {
+                    const isActive = pathname === link.href;
+                    return (
+                      <Link
+                        key={link.name}
+                        href={link.href}
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        className={`block px-4 py-3 text-sm font-bold rounded-lg transition-all ${isActive
+                          ? "bg-white text-yellow-600 shadow-md"
+                          : "text-yellow-900 hover:bg-white/30"
+                          }`}
+                      >
+                        {link.name}
+                      </Link>
+                    );
+                  })}
+                </nav>
+
+                {/* Bottom Text */}
+                <div className="mt-4 pt-4 border-t border-yellow-500/30 text-center">
+                  <p className="text-sm font-bold text-yellow-900">
+                    जय श्री राधे
+                  </p>
                 </div>
               </div>
             </motion.div>
           </>
         )}
       </AnimatePresence>
-    </motion.nav>
+    </>
   );
 }
