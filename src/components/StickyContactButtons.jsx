@@ -17,7 +17,7 @@ export default function StickyContactButtons() {
                 className="bg-green-500 hover:bg-green-600 text-white p-2 md:p-2.5 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-white"
                 aria-label="Contact on WhatsApp"
             >
-                <WhatsAppIcon sx={{ fontSize: { xs: 18, md: 24 } }} />
+                <WhatsAppIcon sx={{ fontSize: { xs: 24, md: 24 } }} />
             </motion.a>
 
             {/* Phone Button */}
@@ -28,7 +28,7 @@ export default function StickyContactButtons() {
                 className="bg-blue-500 hover:bg-blue-600 text-white p-2 md:p-2.5 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-white"
                 aria-label="Call us"
             >
-                <PhoneIcon sx={{ fontSize: { xs: 18, md: 24 } }} />
+                <PhoneIcon sx={{ fontSize: { xs: 24, md: 24 } }} />
             </motion.a>
         </div>
     );
