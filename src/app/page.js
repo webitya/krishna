@@ -4,12 +4,27 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { Star, ArrowRight, Sun, BookOpen, Music } from "lucide-react";
 import HeroCarousel from "@/components/HeroCarousel";
+import MahaprabhuIntro from "@/components/MahaprabhuIntro";
+import RadhaVallabhSection from "@/components/RadhaVallabhSection";
+import AcharyaSurajSection from "@/components/AcharyaSurajSection";
+
+
+
 
 export default function Home() {
   return (
     <div className="flex flex-col w-full bg-white text-black pt-16 md:pt-14">
       {/* Hero Carousel Section */}
       <HeroCarousel />
+
+      {/* Mahaprabhu Introduction Section */}
+      <MahaprabhuIntro />
+
+      {/* Radha Vallabh Section */}
+      <RadhaVallabhSection />
+
+      {/* Acharya Suraj Goswami Section */}
+      <AcharyaSurajSection />
 
       {/* Featured Section - Temple Grid */}
       <section className="py-24 bg-white relative">
