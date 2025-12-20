@@ -27,7 +27,6 @@ export default function Navbar() {
     { name: "PADAWALI", href: "/padawali" },
     { name: "VANSHAWALI", href: "/vanshawali" },
     { name: "SEWA MANORATH", href: "/sewa-manorath" },
-    { name: "BRAJ HIT SHARNAM", href: "/braj-hit-sharnam" },
     { name: "GALLERY", href: "/gallery" },
     { name: "CONTACT US", href: "/contact" },
   ];
@@ -39,31 +38,23 @@ export default function Navbar() {
         animate={{ y: 0 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-white ${isScrolled
-          ? "bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-400 shadow-lg py-2"
-          : "bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-400 py-3"
+          ? "bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-400 shadow-lg"
+          : "bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-400"
           }`}
       >
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between">
             {/* Logo Section - Compact */}
-            <Link href="/" className="flex items-center gap-2 md:gap-3 group">
-              <div className="relative w-10 h-10 md:w-12 md:h-12 rounded-full overflow-hidden ring-2 ring-white shadow-lg bg-yellow-400 flex-shrink-0">
+            <Link href="/" className="flex items-center justify-center group">
+              <div className="relative w-16 h-16 md:w-20 md:h-20 flex items-center justify-center">
                 <Image
                   src="/logo.png"
                   alt="श्री राधा वल्लभ लाल"
-                  width={48}
-                  height={48}
-                  className="object-contain pt-2"
+                  width={80}
+                  height={80}
+                  className="object-contain"
                   priority
                 />
-              </div>
-              <div className="flex flex-col">
-                <span className="text-base md:text-lg lg:text-xl font-bold text-yellow-900 leading-tight whitespace-nowrap">
-                  श्री राधा वल्लभ लाल
-                </span>
-                <span className="text-[10px] md:text-xs text-yellow-800 font-medium uppercase tracking-wide hidden sm:block">
-                  Shri Radha Vallabh Lal
-                </span>
               </div>
             </Link>
 
@@ -84,6 +75,22 @@ export default function Navbar() {
                   </Link>
                 );
               })}
+
+              {/* Decorative Divider */}
+              <div className="h-8 w-px bg-yellow-600/30 mx-2"></div>
+
+              {/* NGO Logo */}
+              <div className="relative group cursor-pointer">
+                <div className="relative w-10 h-10 transition-transform duration-300 group-hover:scale-110">
+                  <Image
+                    src="/logobraj.png"
+                    alt="Braj Hit Sharnam"
+                    width={40}
+                    height={40}
+                    className="object-contain drop-shadow-md"
+                  />
+                </div>
+              </div>
             </div>
 
             {/* Mobile Menu Button */}
@@ -128,23 +135,15 @@ export default function Navbar() {
                 </button>
 
                 {/* Logo */}
-                <div className="flex items-center gap-3 mb-6 pb-4 border-b border-yellow-500/30">
-                  <div className="w-12 h-12 rounded-full overflow-hidden ring-2 ring-white shadow-lg bg-yellow-50">
+                <div className="flex items-center mb-6 pb-4 border-b border-yellow-500/30">
+                  <div className="w-12 h-12">
                     <Image
                       src="/logo.png"
                       alt="Logo"
                       width={48}
                       height={48}
-                      className="object-contain p-1"
+                      className="object-contain"
                     />
-                  </div>
-                  <div className="flex flex-col">
-                    <span className="text-base font-bold text-yellow-900 leading-tight">
-                      श्री राधा वल्लभ लाल
-                    </span>
-                    <span className="text-[10px] text-yellow-800 font-medium uppercase tracking-wide">
-                      Shri Radha Vallabh Lal
-                    </span>
                   </div>
                 </div>
 
@@ -169,10 +168,23 @@ export default function Navbar() {
                 </nav>
 
                 {/* Bottom Text */}
-                <div className="mt-4 pt-4 border-t border-yellow-500/30 text-center">
+                <div className="mt-4 pt-4 border-t border-yellow-500/30 text-center space-y-3">
                   <p className="text-sm font-bold text-yellow-900">
                     जय श्री राधे
                   </p>
+
+                  {/* NGO Logo */}
+                  <div className="flex justify-center">
+                    <div className="relative w-12 h-12 transition-transform duration-300 hover:scale-110">
+                      <Image
+                        src="/logobraj.png"
+                        alt="Braj Hit Sharnam"
+                        width={48}
+                        height={48}
+                        className="object-contain drop-shadow-md"
+                      />
+                    </div>
+                  </div>
                 </div>
               </div>
             </motion.div>

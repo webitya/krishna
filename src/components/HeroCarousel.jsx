@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function HeroCarousel() {
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -123,68 +123,6 @@ export default function HeroCarousel() {
                                 priority
                                 quality={100}
                             />
-                        </div>
-
-                        {/* Text Overlay - Compact for Mobile */}
-                        <div className="absolute bottom-4 md:bottom-28 lg:bottom-40 left-3 md:left-16 lg:left-24 z-20 max-w-3xl">
-                            <motion.div
-                                initial={{ opacity: 0, x: -50 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                transition={{ duration: 0.8, delay: 0.4 }}
-                                className="mb-1 md:mb-4 flex items-center gap-1 md:gap-2"
-                            >
-                                <Sparkles className="w-3 h-3 md:w-6 lg:w-8 md:h-6 lg:h-8 text-yellow-400 animate-pulse" />
-                                <div className="h-px w-8 md:w-16 lg:w-24 bg-gradient-to-r from-yellow-400 to-transparent"></div>
-                            </motion.div>
-
-                            <motion.h1
-                                initial={{ opacity: 0, y: 30 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.8, delay: 0.5 }}
-                                className="text-sm md:text-3xl lg:text-5xl xl:text-7xl font-bold text-white mb-1 md:mb-3 lg:mb-6 drop-shadow-2xl leading-tight"
-                                style={{
-                                    fontFamily: "serif",
-                                    textShadow: "0 2px 10px rgba(0,0,0,0.8), 0 4px 20px rgba(0,0,0,0.6)",
-                                }}
-                            >
-                                {slides[currentSlide].title}
-                            </motion.h1>
-
-                            <motion.p
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.8, delay: 0.7 }}
-                                className="text-xs md:text-lg lg:text-2xl xl:text-4xl text-white mb-1 md:mb-2 lg:mb-3 drop-shadow-xl font-semibold hidden md:block"
-                                style={{
-                                    fontFamily: "serif",
-                                    textShadow: "0 2px 8px rgba(0,0,0,0.7)",
-                                }}
-                            >
-                                {slides[currentSlide].subtitle}
-                            </motion.p>
-
-                            <motion.p
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.8, delay: 0.9 }}
-                                className="text-xs md:text-base lg:text-xl xl:text-2xl text-white/95 drop-shadow-lg hidden md:block"
-                                style={{
-                                    fontFamily: "serif",
-                                    textShadow: "0 2px 6px rgba(0,0,0,0.6)",
-                                }}
-                            >
-                                {slides[currentSlide].description}
-                            </motion.p>
-
-                            <motion.div
-                                initial={{ opacity: 0, x: -50 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                transition={{ duration: 0.8, delay: 1.1 }}
-                                className="mt-1 md:mt-4 flex items-center gap-1 md:gap-2 hidden md:flex"
-                            >
-                                <div className="h-px w-8 md:w-16 lg:w-24 bg-gradient-to-r from-yellow-400 to-transparent"></div>
-                                <Sparkles className="w-3 h-3 md:w-6 lg:w-8 md:h-6 lg:h-8 text-yellow-400 animate-pulse" />
-                            </motion.div>
                         </div>
                     </motion.div>
                 </AnimatePresence>
