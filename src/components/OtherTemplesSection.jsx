@@ -22,6 +22,16 @@ const templeItems = [
         image: "/Temple Names/Mansarovar Mant Gram.jpeg",
     },
     {
+        title: "काभ्यवन मंदिर",
+        subtitle: "Kamyavan Temple",
+        image: "/pic2.jpg", // Using as placeholder
+    },
+    {
+        title: "रास मंडल",
+        subtitle: "Raas Mandal, Vrindavan",
+        image: "/pic3.jpg", // Using as placeholder
+    },
+    {
         title: "श्री नवरंगी लाल जी",
         subtitle: "Shri Navrangi Lal ji",
         image: "/Temple Names/Shri Navrangi Lal ji.webp",
@@ -34,7 +44,7 @@ export default function OtherTemplesSection() {
     const scroll = (direction) => {
         if (scrollRef.current) {
             const { scrollLeft, clientWidth } = scrollRef.current;
-            const scrollAmount = clientWidth > 768 ? clientWidth / 2 : clientWidth;
+            const scrollAmount = clientWidth > 768 ? clientWidth / 3 : clientWidth / 2;
             const scrollTo = direction === 'left'
                 ? scrollLeft - scrollAmount
                 : scrollLeft + scrollAmount;
@@ -44,47 +54,45 @@ export default function OtherTemplesSection() {
     };
 
     return (
-        <section className="relative py-10 md:py-14 bg-gray-50/50 overflow-hidden">
+        <section className="relative py-8 md:py-12 bg-white overflow-hidden">
             <div className="container mx-auto px-4 md:px-8 relative z-10">
-                {/* Header Section */}
-                <div className="text-center mb-8 md:mb-10">
+                {/* Compact Header */}
+                <div className="text-center mb-6 md:mb-8">
                     <motion.div
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 0, y: 15 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="flex flex-col items-center"
                     >
-                        <h2 className="text-2xl md:text-4xl lg:text-5xl font-serif font-bold text-gray-800 mb-2 leading-tight">
+                        <h2 className="text-2xl md:text-3xl lg:text-4xl font-serif font-bold text-gray-900 mb-1">
                             राधावल्लभी संप्रदाय के अन्य मुख्य मंदिर
                         </h2>
-                        <p className="text-gray-500 text-sm md:text-base font-medium tracking-wide">
+                        <p className="text-gray-400 text-xs md:text-sm font-medium">
                             Other Major Temples of the Radhavallabha Sampradaya
                         </p>
-                        <div className="w-16 h-1 bg-yellow-400 mt-4 rounded-full" />
                     </motion.div>
                 </div>
 
                 {/* Carousel Container */}
                 <div className="relative group px-1 md:px-12">
-                    {/* Navigation Buttons */}
+                    {/* Sleek Navigation */}
                     <button
                         onClick={() => scroll('left')}
-                        className="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 bg-white/90 hover:bg-white text-gray-400 hover:text-yellow-600 rounded-full flex items-center justify-center transition-all border border-gray-100 shadow-md hidden md:flex active:scale-95"
+                        className="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 bg-white/90 hover:bg-white text-gray-400 hover:text-yellow-600 rounded-full flex items-center justify-center transition-all border border-gray-100 shadow-sm hidden md:flex active:scale-90"
                     >
-                        <ChevronLeft size={24} />
+                        <ChevronLeft size={22} />
                     </button>
 
                     <button
                         onClick={() => scroll('right')}
-                        className="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 bg-white/90 hover:bg-white text-gray-400 hover:text-yellow-600 rounded-full flex items-center justify-center transition-all border border-gray-100 shadow-md hidden md:flex active:scale-95"
+                        className="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 bg-white/90 hover:bg-white text-gray-400 hover:text-yellow-600 rounded-full flex items-center justify-center transition-all border border-gray-100 shadow-sm hidden md:flex active:scale-90"
                     >
-                        <ChevronRight size={24} />
+                        <ChevronRight size={22} />
                     </button>
 
                     {/* Scrollable Area */}
                     <div
                         ref={scrollRef}
-                        className="flex gap-4 md:gap-6 overflow-x-auto pb-6 scrollbar-hide snap-x snap-mandatory px-2"
+                        className="flex gap-4 md:gap-6 overflow-x-auto pb-6 scrollbar-hide snap-x snap-mandatory px-4"
                         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
                     >
                         {templeItems.map((temple, index) => (
@@ -93,38 +101,31 @@ export default function OtherTemplesSection() {
                                 initial={{ opacity: 0, scale: 0.95 }}
                                 whileInView={{ opacity: 1, scale: 1 }}
                                 viewport={{ once: true }}
-                                transition={{ duration: 0.5, delay: index * 0.1 }}
-                                className="flex-shrink-0 w-[240px] md:w-[300px] snap-center group/card"
+                                transition={{ duration: 0.4, delay: index * 0.05 }}
+                                className="flex-shrink-0 w-[200px] md:w-[260px] snap-center pt-2"
                             >
-                                <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 flex flex-col h-full hover:-translate-y-1">
-                                    {/* Image Container */}
+                                <div className="bg-[#fafafa] rounded-2xl overflow-hidden border border-gray-100 transition-all duration-500 hover:shadow-[0_12px_30px_rgba(0,0,0,0.06)] group/card h-full flex flex-col hover:-translate-y-1">
                                     <div className="relative aspect-[4/3] overflow-hidden">
                                         <Image
                                             src={temple.image}
                                             alt={temple.title}
                                             fill
-                                            className="object-cover group-hover/card:scale-110 transition-transform duration-700"
+                                            className="object-cover group-hover/card:scale-105 transition-transform duration-700"
                                         />
-                                        <div className="absolute inset-0 bg-black/10 group-hover/card:bg-black/0 transition-colors duration-500" />
-
-                                        {/* Floating Badge */}
-                                        <div className="absolute top-3 right-3 bg-white/80 backdrop-blur-sm p-1.5 rounded-lg shadow-sm">
-                                            <MapPin size={16} className="text-yellow-600" />
+                                        <div className="absolute top-2 right-2 bg-white/80 backdrop-blur-sm p-1 rounded-lg">
+                                            <MapPin size={14} className="text-yellow-600" />
                                         </div>
                                     </div>
 
-                                    {/* Text Content */}
-                                    <div className="p-4 md:p-5 flex flex-col items-center text-center">
-                                        <h3 className="text-lg md:text-xl font-serif font-bold text-gray-800 mb-1 leading-tight group-hover/card:text-yellow-700 transition-colors">
+                                    <div className="p-4 flex flex-col items-center text-center">
+                                        <h3 className="text-base md:text-lg font-serif font-bold text-gray-800 mb-0.5 group-hover/card:text-yellow-700 transition-colors">
                                             {temple.title}
                                         </h3>
-                                        <p className="text-gray-400 text-xs md:text-sm font-medium">
+                                        <p className="text-gray-400 text-[10px] md:text-xs">
                                             {temple.subtitle}
                                         </p>
                                     </div>
-
-                                    {/* Bottom Accent */}
-                                    <div className="h-1 w-full bg-yellow-400/0 group-hover/card:bg-yellow-400 transition-colors duration-500" />
+                                    <div className="h-0.5 w-full bg-yellow-400/0 group-hover/card:bg-yellow-400 transition-colors duration-500 mt-auto" />
                                 </div>
                             </motion.div>
                         ))}

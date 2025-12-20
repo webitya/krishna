@@ -30,8 +30,8 @@ export default function Footer() {
                         <ul className="space-y-3 text-gray-600">
                             <li>Shri Dham Vrindavan</li>
                             <li>Mathura, Uttar Pradesh</li>
-                            <li className="pt-2 text-[#FF9933]">contact@shriradhavallabhlal.com</li>
-                            <li>+91 98765 43210</li>
+                            <li className="pt-2 text-[#FF9933]">contact@brahithsharnam.org</li>
+                            <li>+91 816 810 0515</li>
                         </ul>
                     </div>
                 </div>

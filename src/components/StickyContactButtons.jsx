@@ -9,7 +9,7 @@ export default function StickyContactButtons() {
         <div className="fixed right-1 md:right-1 bottom-1 md:bottom-1 z-40 flex flex-col gap-1">
             {/* WhatsApp Button */}
             <motion.a
-                href="https://wa.me/YOUR_PHONE_NUMBER" // Replace with actual WhatsApp number
+                href="https://wa.me/918168100515"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.1 }}
@@ -22,7 +22,7 @@ export default function StickyContactButtons() {
 
             {/* Phone Button */}
             <motion.a
-                href="tel:YOUR_PHONE_NUMBER" // Replace with actual phone number
+                href="tel:+918168100515"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
                 className="bg-blue-500 hover:bg-blue-600 text-white p-2 md:p-2.5 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-white"
