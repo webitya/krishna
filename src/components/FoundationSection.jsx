@@ -65,6 +65,34 @@ const foundationItems = [
     },
 ];
 
+// Reusable Card Component
+const FoundationCard = ({ item, index }) => (
+    <motion.div
+        initial={{ opacity: 0, scale: 0.95 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, delay: index * 0.05 }}
+        className="group/card bg-gray-50/50 hover:bg-white rounded-2xl p-4 md:p-6 flex flex-col items-center text-center transition-all duration-300 border border-gray-50 hover:border-purple-50 hover:shadow-sm h-full"
+    >
+        {/* Icon Container */}
+        <div
+            className={`${item.bgColor} ${item.iconColor} w-14 h-14 md:w-20 md:h-20 rounded-full flex items-center justify-center mb-3 md:mb-4 transition-transform duration-300 group-hover/card:scale-105`}
+        >
+            {React.cloneElement(item.icon, { sx: { fontSize: 24 } })}
+        </div>
+
+        {/* Text Content */}
+        <div className="space-y-1">
+            <h3 className="text-sm md:text-lg font-bold text-gray-800 font-serif leading-tight">
+                {item.title}
+            </h3>
+            <p className="text-gray-400 text-[10px] md:text-sm font-medium">
+                {item.subtitle}
+            </p>
+        </div>
+    </motion.div>
+);
+
 export default function FoundationSection() {
     const scrollRef = useRef(null);
 
@@ -80,84 +108,69 @@ export default function FoundationSection() {
     };
 
     return (
-        <section className="relative py-12 md:py-16 bg-white overflow-hidden">
+        <section className="relative py-8 md:py-12 bg-white overflow-hidden">
             <div className="container mx-auto px-4 md:px-8 relative z-10">
                 {/* Header Section */}
-                <div className="text-center mb-10 md:mb-14">
+                <div className="text-center mb-8 md:mb-10">
                     <motion.div
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 0, y: 15 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         className="flex flex-col items-center"
                     >
-                        <h2 className="text-3xl md:text-5xl lg:text-6xl font-serif font-bold text-[#8b3d8b] mb-4">
+                        <h2 className="text-2xl md:text-3xl lg:text-4xl font-serif font-bold text-[#8b3d8b] mb-2">
                             हित वृंदावन सहयोग फाउंडेशन
                         </h2>
-                        <div className="w-16 h-1 bg-purple-200 rounded-full" />
+                        <div className="w-12 h-0.5 bg-purple-200 rounded-full" />
                     </motion.div>
                 </div>
 
-                {/* Carousel Container */}
-                <div className="relative group px-1 md:px-12">
-                    {/* Permanent Navigation Buttons */}
+                {/* Grid for Mobile - Non-Carousel */}
+                <div className="grid grid-cols-2 gap-3 md:hidden mb-4">
+                    {foundationItems.map((item, index) => (
+                        <div key={index} className="pt-1">
+                            <FoundationCard item={item} index={index} />
+                        </div>
+                    ))}
+                </div>
+
+                {/* Carousel for Desktop */}
+                <div className="relative group px-1 md:px-8 hidden md:block">
+                    {/* Navigation Buttons */}
                     <button
                         onClick={() => scroll("left")}
-                        className="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-11 h-11 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-full flex items-center justify-center transition-all border border-gray-200 shadow-md hidden md:flex active:scale-90"
+                        className="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-8 h-8 bg-gray-50 hover:bg-gray-100 text-gray-500 rounded-full flex items-center justify-center transition-all border border-gray-100 shadow-sm flex active:scale-95"
                     >
-                        <ChevronLeft size={24} />
+                        <ChevronLeft size={18} />
                     </button>
 
                     <button
                         onClick={() => scroll("right")}
-                        className="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-11 h-11 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-full flex items-center justify-center transition-all border border-gray-200 shadow-md hidden md:flex active:scale-90"
+                        className="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-8 h-8 bg-gray-50 hover:bg-gray-100 text-gray-500 rounded-full flex items-center justify-center transition-all border border-gray-100 shadow-sm flex active:scale-95"
                     >
-                        <ChevronRight size={24} />
+                        <ChevronRight size={18} />
                     </button>
 
                     {/* Scrollable Area */}
                     <div
                         ref={scrollRef}
-                        className="flex gap-6 md:gap-10 overflow-x-auto pb-8 scrollbar-hide snap-x snap-mandatory px-4"
+                        className="flex gap-4 md:gap-6 overflow-x-auto pb-6 scrollbar-hide snap-x snap-mandatory px-2"
                         style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
                     >
                         {foundationItems.map((item, index) => (
-                            <motion.div
+                            <div
                                 key={index}
-                                initial={{ opacity: 0, scale: 0.9 }}
-                                whileInView={{ opacity: 1, scale: 1 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.5, delay: index * 0.1 }}
-                                className="flex-shrink-0 w-[240px] md:w-[280px] snap-center pt-2"
+                                className="flex-shrink-0 w-[200px] md:w-[220px] snap-center pt-1"
                             >
-                                <div className="group/card bg-gray-50/50 hover:bg-white rounded-3xl p-6 md:p-8 flex flex-col items-center text-center transition-all duration-500 border border-gray-100 hover:border-purple-100 hover:shadow-[0_10px_40px_rgba(139,61,139,0.08)] h-full">
-                                    {/* Icon Container */}
-                                    <div
-                                        className={`${item.bgColor} ${item.iconColor} w-24 h-24 md:w-28 md:h-28 rounded-full flex items-center justify-center mb-6 shadow-inner transition-transform duration-500 group-hover/card:scale-110`}
-                                    >
-                                        {item.icon}
-                                    </div>
-
-                                    {/* Text Content */}
-                                    <div className="space-y-2">
-                                        <h3 className="text-xl md:text-2xl font-bold text-gray-800 font-serif leading-tight">
-                                            {item.title}
-                                        </h3>
-                                        <p className="text-gray-400 text-sm md:text-base font-medium">
-                                            {item.subtitle}
-                                        </p>
-                                    </div>
-
-                                    {/* Decorative bar on hover */}
-                                    <div className="w-8 h-1 bg-purple-200 rounded-full mt-6 scale-x-0 group-hover/card:scale-x-100 transition-transform duration-500" />
-                                </div>
-                            </motion.div>
+                                <FoundationCard item={item} index={index} />
+                            </div>
                         ))}
                     </div>
 
-                    {/* Mobile Indicators */}
-                    <div className="flex justify-center gap-2 mt-2 md:hidden">
+                    {/* Desktop Indicators */}
+                    <div className="flex justify-center gap-1.5 mt-0">
                         {foundationItems.map((_, i) => (
-                            <div key={i} className="w-1.5 h-1.5 rounded-full bg-purple-200" />
+                            <div key={i} className="w-1 h-1 rounded-full bg-purple-100" />
                         ))}
                     </div>
                 </div>

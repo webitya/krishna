@@ -80,7 +80,7 @@ export default function Navbar() {
               <div className="h-8 w-px bg-yellow-600/30 mx-2"></div>
 
               {/* NGO Logo */}
-              <div className="relative group cursor-pointer">
+              <Link href="/braj-hit-sharnam" className="relative group cursor-pointer block">
                 <div className="relative w-10 h-10 transition-transform duration-300 group-hover:scale-110">
                   <Image
                     src="/logobraj.png"
@@ -90,7 +90,7 @@ export default function Navbar() {
                     className="object-contain drop-shadow-md"
                   />
                 </div>
-              </div>
+              </Link>
             </div>
 
             {/* Mobile Menu Button */}
