@@ -57,7 +57,7 @@ const foundationItems = [
         iconColor: "text-red-600",
     },
     {
-        title: "मेडिकल कैंप",
+        title: "चिकित्सा शिविर",
         subtitle: "Medical Camp",
         icon: <MedicalServicesIcon sx={{ fontSize: 40 }} />,
         bgColor: "bg-cyan-50",

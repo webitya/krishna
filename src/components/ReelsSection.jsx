@@ -187,7 +187,7 @@ export default function ReelsSection() {
                         className="flex flex-col items-center"
                     >
                         <h2 className="text-3xl md:text-5xl font-serif font-bold text-[#8b3d8b] mb-3">
-                            सोशल मीडिया दर्शन
+                           उत्सव मालिका
                         </h2>
 
                         <div className="flex items-center gap-4">

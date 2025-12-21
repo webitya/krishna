@@ -22,14 +22,14 @@ const templeItems = [
         image: "/Temple Names/Mansarovar Mant Gram.jpeg",
     },
     {
-        title: "काभ्यवन मंदिर",
+        title: "काम्यवन मंदिर",
         subtitle: "Kamyavan Temple",
-        image: "/pic2.jpg", // Using as placeholder
+        image: "/Temple Names/काम्यवन.jpeg", // Using as placeholder
     },
     {
         title: "रास मंडल",
         subtitle: "Raas Mandal, Vrindavan",
-        image: "/pic3.jpg", // Using as placeholder
+        image: "/Temple Names/रासमंडल.jpeg", // Using as placeholder
     },
     {
         title: "श्री नवरंगी लाल जी",
