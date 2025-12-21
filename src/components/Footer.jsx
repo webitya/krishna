@@ -50,6 +50,11 @@ export default function Footer() {
                                 </a>
                             </li>
                             <li className="pt-1">
+                                <a href="tel:+918168100515" className="hover:text-[#FF9933] transition-colors">
+                                    +91 81681 00515
+                                </a>
+                            </li>
+                            <li className="pt-1">
                                 <Link href="/contact" className="hover:text-[#FF9933] transition-colors">Contact Support</Link>
                             </li>
                         </ul>
