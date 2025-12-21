@@ -6,12 +6,12 @@ import { Sparkles } from "lucide-react";
 
 const sewaItems = [
     {
-        title: "व्याहला (विवाह) उत्सव सेवा मनोरथ",
+        title: "व्याहुला (विवाह) उत्सव सेवा मनोरथ",
         image: "/seva/व्याहुला उत्सव दर्शन.jpg",
     },
     {
         title: "इत्र सेवा मनोरथ",
-        image: "/seva/श्रृंगार दर्शन.jpg",
+        image: "/seva/itarseva.jpeg",
     },
     {
         title: "श्रीजी पोशाक सेवा मनोरथ",
@@ -19,11 +19,15 @@ const sewaItems = [
     },
     {
         title: "अष्टयाम भोग सेवा मनोरथ",
-        image: "/seva/अन्नकूट 56 भोग व राजभोग दर्शन.jpg",
+        image: "/seva/अष्ट्यम भोग सेवा मनोरथ.jpg",
     },
     {
         title: "साधु संत सेवा मनोरथ",
         image: "/seva/साधु संत सेवा मनोरथ.webp",
+    },
+    {
+        title: "56 भोग सेवा मनोरथ",
+        image: "/seva/अन्नकूट 56 भोग व राजभोग 56.jpg",
     },
 ];
 
