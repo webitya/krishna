@@ -36,7 +36,7 @@ const foundationItems = [
         iconColor: "text-blue-600",
     },
     {
-        title: "वृक्ष रोपण",
+        title: "वृक्षा रोपण",
         subtitle: "Tree Plantation",
         icon: <ParkIcon sx={{ fontSize: 40 }} />,
         bgColor: "bg-green-50",

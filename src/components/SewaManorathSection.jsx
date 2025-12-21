@@ -7,7 +7,7 @@ import { useRef } from "react";
 
 const sewaItems = [
     {
-        title: "व्याहला (विवाह) उत्सव सेवा मनोरथ",
+        title: "व्याहुला (विवाह) उत्सव सेवा मनोरथ",
         image: "/seva/व्याहुला उत्सव दर्शन.jpg",
     },
     {
