@@ -15,7 +15,7 @@ import MedicalServicesIcon from "@mui/icons-material/MedicalServices";
 
 const foundationItems = [
     {
-        title: "गौ माता भेंट व सेवा",
+        title: "गौ माता सेवा",
         subtitle: "Gau Seva & Donation",
         icon: <AgricultureIcon sx={{ fontSize: 40 }} />,
         bgColor: "bg-orange-50",
@@ -29,7 +29,7 @@ const foundationItems = [
         iconColor: "text-amber-600",
     },
     {
-        title: "यमुना सफाई सेवा",
+        title: "यमुना मार्जन सेवा",
         subtitle: "Yamuna Ji Cleaning Service",
         icon: <WaterIcon sx={{ fontSize: 40 }} />,
         bgColor: "bg-blue-50",
@@ -119,7 +119,7 @@ export default function FoundationSection() {
                         className="flex flex-col items-center"
                     >
                         <h2 className="text-2xl md:text-3xl lg:text-4xl font-serif font-bold text-[#8b3d8b] mb-2">
-                            हित वृंदावन सहयोग फाउंडेशन
+                            श्री ब्रज हित शरणम् फाउंडेशन
                         </h2>
                         <div className="w-12 h-0.5 bg-purple-200 rounded-full" />
                     </motion.div>
