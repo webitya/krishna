@@ -27,7 +27,6 @@ export default function Navbar() {
     { name: "PADAWALI", href: "/padawali" },
     { name: "VANSHAWALI", href: "/vanshawali" },
     { name: "SEWA MANORATH", href: "/sewa-manorath" },
-    { name: "BRAJ HIT SHARNAM", href: "/braj-hit-sharnam" },
     { name: "GALLERY", href: "/gallery" },
     { name: "CONTACT US", href: "/contact" },
   ];
@@ -171,12 +170,16 @@ export default function Navbar() {
                 {/* Bottom Text */}
                 <div className="mt-4 pt-4 border-t border-yellow-500/30 text-center space-y-3">
                   <p className="text-sm font-bold text-yellow-900">
-                    जय श्री राधे
+                    BRAJ HIT SHARNAM
                   </p>
 
                   {/* NGO Logo */}
                   <div className="flex justify-center">
-                    <div className="relative w-12 h-12 transition-transform duration-300 hover:scale-110">
+                    <Link
+                      href="/braj-hit-sharnam"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="relative w-12 h-12 transition-transform duration-300 hover:scale-110"
+                    >
                       <Image
                         src="/logobraj.png"
                         alt="Braj Hit Sharnam"
@@ -184,7 +187,7 @@ export default function Navbar() {
                         height={48}
                         className="object-contain drop-shadow-md"
                       />
-                    </div>
+                    </Link>
                   </div>
                 </div>
               </div>
