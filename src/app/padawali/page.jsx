@@ -85,7 +85,7 @@ export default function Padawali() {
     };
 
     return (
-        <div className="min-h-screen bg-[#fffcf5] selection:bg-orange-200 selection:text-orange-900 font-sans">
+        <div className="min-h-screen bg-[#fffcf5] selection:bg-orange-200 selection:text-orange-900 py-3 font-sans">
             {/* Compact Header Section */}
             <div className="relative pt-20 pb-12 px-6 overflow-hidden bg-gradient-to-b from-orange-400 via-orange-300 to-orange-50">
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[400px] bg-white/20 blur-[120px] rounded-full pointer-events-none" />
@@ -171,7 +171,7 @@ export default function Padawali() {
                                         {item.category}
                                     </span>
 
-                                    <h3 className="text-xl md:text-2xl font-serif font-black text-orange-950 truncate whitespace-nowrap w-full mb-1">
+                                    <h3 className="text-xl md:text-2xl font-serif font-black text-orange-950 truncate whitespace-nowrap w-full py-4 ">
                                         {item.title}
                                         <Music className="inline-block ml-2 text-orange-300" size={18} />
                                     </h3>
