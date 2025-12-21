@@ -38,7 +38,7 @@ const padavaliData = [
     { id: "himritu", title: "हिमरितु फरगुल", filename: "हिमरितु में फरगुल के पद.txt", category: "Utsav", theme: "Winter Collection" },
 ];
 
-const categories = ["All", "Utsav", "Leela", "Sahitya", "Vivah", "Stotra", "Badhai", "Dham"];
+const categories = ["All", ...new Set(padavaliData.map(item => item.category))];
 
 export default function Padawali() {
     const [searchQuery, setSearchQuery] = useState("");
@@ -138,8 +138,8 @@ export default function Padawali() {
                                 key={cat}
                                 onClick={() => setSelectedCategory(cat)}
                                 className={`px-5 py-2 rounded-full font-bold text-[10px] md:text-xs uppercase tracking-widest transition-all duration-300 border ${selectedCategory === cat
-                                        ? "bg-orange-950 text-white border-orange-950 shadow-md scale-105"
-                                        : "bg-white text-orange-900/60 border-orange-100 hover:border-orange-200 hover:bg-orange-50/50"
+                                    ? "bg-orange-950 text-white border-orange-950 shadow-md scale-105"
+                                    : "bg-white text-orange-900/60 border-orange-100 hover:border-orange-200 hover:bg-orange-50/50"
                                     }`}
                             >
                                 {cat}
@@ -228,7 +228,7 @@ export default function Padawali() {
                                 <div className="flex items-center gap-6">
                                     <button
                                         onClick={() => setSelectedPad(null)}
-                                        className="p-3 bg-orange-50 hover:bg-orange-950 hover:text-white rounded-full transition-all duration-500 text-orange-950 shadow-sm"
+                                        className="hidden md:flex p-3 bg-orange-50 hover:bg-orange-950 hover:text-white rounded-full transition-all duration-500 text-orange-950 shadow-sm"
                                     >
                                         <X size={24} />
                                     </button>
@@ -249,17 +249,24 @@ export default function Padawali() {
                                         whileHover={{ scale: 1.05 }}
                                         whileTap={{ scale: 0.95 }}
                                         onClick={handleCopy}
-                                        className={`flex items-center gap-3 px-8 py-3.5 rounded-full font-black text-[10px] md:text-xs uppercase tracking-[0.2em] transition-all shadow-xl ${copied ? "bg-green-600 text-white" : "bg-orange-950 text-white hover:shadow-orange-950/40"
-                                            }`}
+                                        className="flex items-center gap-3 px-8 py-3.5 rounded-full font-black text-[10px] md:text-xs uppercase tracking-[0.2em] transition-all shadow-xl bg-orange-950 text-white hover:shadow-orange-950/40"
                                     >
                                         {copied ? <Check size={18} /> : <Copy size={18} />}
                                         {copied ? "Copied" : "Copy Verse"}
                                     </motion.button>
                                 </div>
+
+                                {/* Mobile Close Icon (Top Right) - Optional, but keeping it simple as requested */}
+                                <button
+                                    onClick={() => setSelectedPad(null)}
+                                    className="md:hidden p-2 text-orange-950/40"
+                                >
+                                    <X size={20} />
+                                </button>
                             </div>
 
                             {/* Fullscreen Pro Content View with Smooth Scroll */}
-                            <div className="flex-1 overflow-y-auto px-8 md:px-32 lg:px-64 py-16 md:py-24 custom-scrollbar scroll-smooth bg-[url('https://www.transparenttextures.com/patterns/cream-paper.png')] relative">
+                            <div className="flex-1 overflow-y-auto px-6 md:px-32 lg:px-64 py-12 md:py-24 custom-scrollbar scroll-smooth bg-[url('https://www.transparenttextures.com/patterns/cream-paper.png')] relative">
                                 {/* Elegant Background Aura */}
                                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-orange-50/10 blur-[120px] rounded-full pointer-events-none" />
 
@@ -302,21 +309,9 @@ export default function Padawali() {
                                 )}
                             </div>
 
-                            {/* Fullscreen Mobile Utility Bar */}
-                            <div className="lg:hidden fixed bottom-12 right-12 flex flex-col gap-6">
-                                <button
-                                    onClick={handleCopy}
-                                    className={`w-20 h-20 rounded-full flex items-center justify-center shadow-[0_20px_50px_rgba(0,0,0,0.3)] active:scale-90 transition-all ${copied ? "bg-green-600 text-white" : "bg-orange-950 text-white"
-                                        }`}
-                                >
-                                    {copied ? <Check size={32} /> : <Copy size={32} />}
-                                </button>
-                                <button
-                                    onClick={() => setSelectedPad(null)}
-                                    className="w-20 h-20 bg-white text-orange-950 rounded-full flex items-center justify-center shadow-[0_20px_50px_rgba(0,0,0,0.3)] border border-orange-50"
-                                >
-                                    <X size={32} />
-                                </button>
+                            {/* Fullscreen Mobile Utility Bar - HIDDEN AS REQUESTED */}
+                            <div className="hidden lg:flex fixed bottom-12 right-12 flex flex-col gap-6">
+                                {/* This bar is now hidden on mobile/tablet to keep it clean */}
                             </div>
                         </motion.div>
                     </motion.div>
