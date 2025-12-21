@@ -17,6 +17,9 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "श्री राधा वल्लभ लाल",
   description: "Dedicated to the preservation and celebration of our eternal spiritual heritage.",
+  icons: {
+    icon: "/favicon.jpeg",
+  },
 };
 
 export default function RootLayout({ children }) {

@@ -27,6 +27,7 @@ export default function Navbar() {
     { name: "PADAWALI", href: "/padawali" },
     { name: "VANSHAWALI", href: "/vanshawali" },
     { name: "SEWA MANORATH", href: "/sewa-manorath" },
+    { name: "BRAJ HIT SHARNAM", href: "/braj-hit-sharnam" },
     { name: "GALLERY", href: "/gallery" },
     { name: "CONTACT US", href: "/contact" },
   ];
