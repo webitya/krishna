@@ -9,6 +9,7 @@ import RadhaVallabhSection from "@/components/RadhaVallabhSection";
 import AcharyaJaiJaiSection from "@/components/AcharyaJaiJaiSection";
 import SewaManorathSection from "@/components/SewaManorathSection";
 import UtsavSection from "@/components/UtsavSection";
+import AshtyamSewaSection from "@/components/AshtyamSewaSection";
 import FoundationSection from "@/components/FoundationSection";
 import OtherTemplesSection from "@/components/OtherTemplesSection";
 import ReelsSection from "@/components/ReelsSection";
@@ -30,6 +31,9 @@ export default function Home() {
 
       {/* Sewa Manorath Section */}
       <SewaManorathSection />
+
+      {/* Ashtyam Sewa Section */}
+      <AshtyamSewaSection />
 
       {/* Utsav Section */}
       <UtsavSection />
