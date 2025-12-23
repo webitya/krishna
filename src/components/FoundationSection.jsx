@@ -23,7 +23,7 @@ const foundationItems = [
     },
     {
         title: "यमुना मार्जन सेवा",
-        subtitle: "Yamuna Ji Cleaning Service",
+        subtitle: "Yamuna Ji Cleaning Seva",
         image: "/foundation/यमुना मार्जन सेवा.jpg",
         bgColor: "bg-blue-50",
     },
