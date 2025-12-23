@@ -52,9 +52,7 @@ export default function Navbar() {
         <div className="absolute top-0 left-1/4 w-32 h-32 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute top-0 right-1/4 w-32 h-32 bg-yellow-500/10 rounded-full blur-3xl pointer-events-none" />
 
-        {/* Lotus Decorations */}
-        <div className="absolute top-1/2 -translate-y-1/2 left-4 text-amber-400/40 text-4xl hidden lg:block z-10 pointer-events-none">❀</div>
-        <div className="absolute top-1/2 -translate-y-1/2 right-4 text-amber-400/40 text-4xl hidden lg:block z-10 pointer-events-none">❀</div>
+
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="flex items-center justify-between">
