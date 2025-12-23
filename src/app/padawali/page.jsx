@@ -4,16 +4,14 @@ import { useState, useEffect, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
     Search,
-    Music,
-    BookOpen,
     X,
     ArrowLeft,
     Copy,
-    Share2,
     Check,
     ChevronRight,
     Sparkles,
-    Heart
+    Scroll,
+    Feather
 } from "lucide-react";
 
 // Metadata for all Padavali files
@@ -39,6 +37,8 @@ const padavaliData = [
 ];
 
 const categories = ["All", ...new Set(padavaliData.map(item => item.category))];
+
+const parchmentBg = "https://www.transparenttextures.com/patterns/aged-paper.png";
 
 export default function Padawali() {
     const [searchQuery, setSearchQuery] = useState("");
@@ -85,97 +85,126 @@ export default function Padawali() {
     };
 
     return (
-        <div className="min-h-screen bg-[#fffcf5] selection:bg-orange-200 selection:text-orange-900 py-3 font-sans">
-            {/* Compact Header Section */}
-            <div className="relative pt-20 pb-12 px-6 overflow-hidden bg-gradient-to-b from-orange-400 via-orange-300 to-orange-50">
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[400px] bg-white/20 blur-[120px] rounded-full pointer-events-none" />
+        <div className="min-h-screen bg-[#fffcf5] selection:bg-[#8b3d8b]/20 selection:text-[#8b3d8b] font-serif relative">
+            {/* Background Texture */}
+            <div className="absolute inset-0 opacity-40 pointer-events-none z-0" style={{ backgroundImage: `url(${parchmentBg})` }} />
+
+            {/* Immersive Compact Hero Section */}
+            <div className="relative pt-24 pb-12 px-6 overflow-hidden">
+                <div className="absolute top-0 inset-x-0 h-[400px] bg-gradient-to-b from-[#8b3d8b]/5 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute top-[-20%] right-[-10%] w-[500px] h-[500px] bg-[#8b3d8b]/5 rounded-full blur-[100px] pointer-events-none" />
 
                 <div className="max-w-7xl mx-auto relative z-10 text-center">
-                    <motion.h1
+                    <motion.div
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="text-4xl md:text-6xl lg:text-7xl font-serif font-black text-orange-950 mb-3 tracking-tighter drop-shadow-xl"
+                        transition={{ duration: 0.8 }}
                     >
-                        Padavali Library
-                    </motion.h1>
 
-                   
+                        <h1 className="text-4xl md:text-6xl font-black text-[#2a1b1b] mb-4 tracking-tight drop-shadow-sm">
+                            Pada<span className="text-[#8b3d8b]">wali</span>
+                        </h1>
+                    </motion.div>
 
                     <motion.div
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.3 }}
-                        className="max-w-2xl mx-auto relative group"
+                        transition={{ delay: 0.2 }}
+                        className="max-w-lg mx-auto relative group mt-6"
                     >
-                        <div className="absolute -inset-1 bg-gradient-to-r from-orange-200 via-orange-100 to-orange-200 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000" />
+                        <div className="absolute -inset-1 bg-gradient-to-r from-[#8b3d8b]/20 via-amber-500/20 to-[#8b3d8b]/20 rounded-xl blur opacity-30 group-hover:opacity-60 transition duration-1000" />
                         <div className="relative">
-                            <Search className="absolute left-5 top-1/2 -translate-y-1/2 text-orange-900/40 group-focus-within:text-orange-950 transition-colors" size={20} />
+                            <div className="absolute left-5 top-1/2 -translate-y-1/2 text-[#8b3d8b]/40 group-focus-within:text-[#8b3d8b] transition-colors">
+                                <Search size={18} />
+                            </div>
                             <input
                                 type="text"
                                 placeholder="Search sacred verses..."
                                 value={searchQuery}
                                 onChange={(e) => setSearchQuery(e.target.value)}
-                                className="w-full pl-14 pr-6 py-4 rounded-xl bg-white/40 backdrop-blur-xl border border-white/40 focus:bg-white focus:outline-none focus:ring-2 focus:ring-orange-200/50 shadow-lg text-orange-950 placeholder:text-orange-900/30 text-base md:text-lg transition-all"
+                                className="w-full pl-12 pr-5 py-3 rounded-xl bg-white/80 backdrop-blur-xl border border-[#8b3d8b]/10 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#8b3d8b]/20 shadow-lg shadow-[#8b3d8b]/5 text-[#2a1b1b] placeholder:text-[#5d4037]/40 text-base transition-all"
                             />
                         </div>
                     </motion.div>
                 </div>
             </div>
 
-            {/* Compact Sticky Category Navigation */}
-            <div className="sticky top-0 z-50 bg-white/80 backdrop-blur-2xl border-b border-orange-50 shadow-sm">
-                <div className="max-w-7xl mx-auto px-4 py-3">
-                    <div className="flex items-center justify-center gap-2 md:gap-4 overflow-x-auto no-scrollbar py-1">
+            {/* Compact Category Navigation */}
+            <div className="sticky top-4 z-40 mb-8 px-4">
+                <div className="max-w-fit mx-auto px-2 py-1.5 bg-white/90 backdrop-blur-xl border border-[#8b3d8b]/10 rounded-full shadow-lg shadow-[#8b3d8b]/5">
+                    <div className="flex items-center gap-1 overflow-x-auto no-scrollbar px-1">
                         {categories.map((cat) => (
                             <button
                                 key={cat}
                                 onClick={() => setSelectedCategory(cat)}
-                                className={`px-5 py-2 rounded-full font-bold text-[10px] md:text-xs uppercase tracking-widest transition-all duration-300 border ${selectedCategory === cat
-                                    ? "bg-orange-950 text-white border-orange-950 shadow-md scale-105"
-                                    : "bg-white text-orange-900/60 border-orange-100 hover:border-orange-200 hover:bg-orange-50/50"
+                                className={`px-4 py-2 rounded-full font-bold text-[9px] md:text-[10px] uppercase tracking-widest transition-all duration-300 relative overflow-hidden group ${selectedCategory === cat
+                                    ? "text-white shadow-md"
+                                    : "text-[#5d4037]/60 hover:text-[#8b3d8b] hover:bg-[#8b3d8b]/5"
                                     }`}
                             >
-                                {cat}
+                                {selectedCategory === cat && (
+                                    <motion.div
+                                        layoutId="activeTab"
+                                        className="absolute inset-0 bg-[#8b3d8b]"
+                                        transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                                    />
+                                )}
+                                <span className="relative z-10">{cat}</span>
                             </button>
                         ))}
                     </div>
                 </div>
             </div>
 
-            <div className="max-w-[1600px] mx-auto px-6 md:px-12 py-12">
+            {/* Premium Card Grid - Refined & Compact */}
+            <div className="max-w-[1600px] mx-auto px-6 md:px-12 pb-32">
                 <motion.div
                     layout
-                    className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8"
+                    className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6"
                 >
                     <AnimatePresence mode="popLayout">
                         {filteredData.map((item, index) => (
                             <motion.div
                                 key={item.id}
                                 layout
-                                initial={{ opacity: 0, y: 10 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0, scale: 0.98 }}
-                                transition={{ duration: 0.4, delay: index * 0.02 }}
+                                initial={{ opacity: 0, scale: 0.95 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                exit={{ opacity: 0, scale: 0.95 }}
+                                transition={{ duration: 0.3, delay: index * 0.02 }}
                                 onClick={() => setSelectedPad(item)}
-                                className="group relative aspect-square bg-white border border-orange-100/40 rounded-[2rem] p-6 shadow-sm cursor-pointer flex flex-col items-center justify-center text-center"
+                                className="group relative aspect-[4/5] bg-white rounded-lg cursor-pointer perspective-1000"
                             >
-                                <div className="relative z-10 w-full px-4 flex flex-col items-center">
-                                    <span className="text-[9px] font-black text-orange-900/20 uppercase tracking-[0.3em] block mb-3">
-                                        {item.category}
-                                    </span>
+                                {/* Card Styling - Parchment Look */}
+                                <div className="absolute inset-0 bg-[#fffcf5] border border-[#d7ccc8] shadow-sm transition-all duration-500 group-hover:shadow-2xl group-hover:shadow-[#8b3d8b]/10 group-hover:-translate-y-1 rounded-lg overflow-hidden">
+                                    {/* Inner Border */}
+                                    <div className="absolute inset-1.5 border border-[#8b3d8b]/5 rounded-[4px] pointer-events-none" />
 
-                                    <h3 className="text-xl md:text-2xl font-serif font-black text-orange-950 truncate whitespace-nowrap w-full py-4 ">
-                                        {item.title}
-                                       
-                                    </h3>
+                                    {/* Content Container */}
+                                    <div className="h-full flex flex-col items-center justify-between p-6 relative z-10">
+                                        {/* Top Decoration */}
+                                        <div className="w-10 h-10 rounded-full bg-[#8b3d8b]/5 flex items-center justify-center text-[#8b3d8b]/60 group-hover:scale-110 group-hover:bg-[#8b3d8b] group-hover:text-white transition-all duration-500">
+                                            <Scroll size={16} className="stroke-[1.5]" />
+                                        </div>
 
-                                    <p className="text-[10px] text-orange-900/30 font-bold uppercase tracking-widest mb-8 truncate w-full">
-                                        {item.theme}
-                                    </p>
+                                        {/* Title Area */}
+                                        <div className="text-center w-full flex-grow flex flex-col justify-center">
+                                            <span className="text-[9px] font-bold text-[#8b3d8b]/40 uppercase tracking-[0.2em] block mb-3">
+                                                {item.category}
+                                            </span>
+                                            <h3 className="text-xl md:text-2xl font-black text-[#2a1b1b] leading-tight py-4  group-hover:text-[#8b3d8b] transition-colors duration-300 line-clamp-2">
+                                                {item.title}
+                                            </h3>
+                                            <p className="text-[9px] text-[#5d4037]/50 font-bold uppercase tracking-widest mt-2">
+                                                {item.theme}
+                                            </p>
+                                        </div>
 
-                                    <div className="w-full pt-4 border-t border-orange-50 flex justify-center">
-                                        <div className="px-6 py-2 rounded-full border border-orange-200 text-orange-900/60 text-[10px] font-black uppercase tracking-[0.2em] group-hover:bg-orange-950 group-hover:text-white group-hover:border-orange-950 transition-all duration-300">
-                                            Read Verse
+                                        {/* Action Button - Always Visible */}
+                                        <div className="w-full text-center mt-2">
+                                            <button className="px-5 py-2 rounded-full bg-[#8b3d8b]/5 border border-[#8b3d8b]/10 text-[#8b3d8b] text-[10px] font-bold uppercase tracking-widest group-hover:bg-[#8b3d8b] group-hover:text-white transition-all duration-300 flex items-center justify-center gap-2 mx-auto w-fit">
+                                                Read Verse
+                                                <ChevronRight size={12} />
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -189,122 +218,97 @@ export default function Padawali() {
                     <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
-                        className="text-center py-60"
+                        className="text-center py-32"
                     >
-                        <div className="w-32 h-32 bg-orange-50 text-orange-100 rounded-full flex items-center justify-center mx-auto mb-10 shadow-inner">
-                            <Search size={60} />
+                        <div className="w-20 h-20 bg-[#fffcf5] border-2 border-dashed border-[#d7ccc8] rounded-full flex items-center justify-center mx-auto mb-6">
+                            <Feather size={28} className="text-[#d7ccc8]" />
                         </div>
-                        <h3 className="text-3xl md:text-5xl font-serif font-black text-orange-950 mb-4 tracking-tight">Divine silence found</h3>
-                        <p className="text-orange-900/40 text-sm md:text-lg font-bold uppercase tracking-[0.3em]">Try another sacred keyword</p>
+                        <h3 className="text-xl font-bold text-[#5d4037] mb-1">No verses found</h3>
+                        <p className="text-[#5d4037]/50 font-medium text-sm">Try searching for a different keyword</p>
                     </motion.div>
                 )}
             </div>
 
-            {/* Edge-to-Edge Fullscreen Reader Modal */}
+            {/* Fullscreen Reader Modal */}
             <AnimatePresence>
                 {selectedPad && (
                     <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        className="fixed inset-0 z-[100] bg-orange-950 flex items-center justify-center p-0"
+                        className="fixed inset-0 z-[100] flex items-center justify-center p-0 md:p-6 bg-[#2a1b1b]/90 backdrop-blur-sm"
                     >
                         <motion.div
-                            initial={{ scale: 1.1, opacity: 0 }}
+                            initial={{ scale: 0.95, opacity: 0 }}
                             animate={{ scale: 1, opacity: 1 }}
-                            exit={{ scale: 1.1, opacity: 0 }}
-                            transition={{ type: "spring", damping: 35, stiffness: 200 }}
-                            className="bg-white w-full h-full overflow-hidden flex flex-col relative"
+                            exit={{ scale: 0.95, opacity: 0 }}
+                            transition={{ type: "spring", damping: 25, stiffness: 300 }}
+                            className="bg-[#fffcf5] w-full max-w-4xl h-full md:h-[90vh] md:rounded-3xl overflow-hidden flex flex-col relative shadow-2xl"
+                            style={{ backgroundImage: `url(${parchmentBg})` }}
                         >
-                            {/* Very Compact Fullscreen Pro Header */}
-                            <div className="px-6 md:px-12 py-5 border-b border-orange-50 flex items-center justify-between sticky top-0 bg-white/95 backdrop-blur-3xl z-10 shadow-sm">
-                                <div className="flex items-center gap-6">
-                                    <button
-                                        onClick={() => setSelectedPad(null)}
-                                        className="hidden md:flex p-3 bg-orange-50 hover:bg-orange-950 hover:text-white rounded-full transition-all duration-500 text-orange-950 shadow-sm"
-                                    >
-                                        <X size={24} />
-                                    </button>
-                                    <div>
-                                        <h2 className="text-xl md:text-3xl font-serif font-black text-orange-950 tracking-tight leading-none mb-1.5">
-                                            {selectedPad.title}
-                                        </h2>
-                                        <div className="flex items-center gap-4">
-                                            <span className="text-[10px] md:text-xs font-black text-orange-950 bg-orange-100 px-3 py-0.5 rounded-full uppercase tracking-[0.2em]">{selectedPad.category}</span>
-                                            <div className="w-1.5 h-1.5 rounded-full bg-orange-200" />
-                                            <span className="text-xs md:text-sm font-black text-orange-900/40 font-serif italic">{selectedPad.theme}</span>
-                                        </div>
-                                    </div>
-                                </div>
+                            {/* Decorative Border Frame */}
+                            <div className="absolute inset-3 border border-[#8b3d8b]/10 md:rounded-[20px] pointer-events-none z-0" />
 
-                                <div className="hidden lg:flex items-center gap-6">
-                                    <motion.button
-                                        whileHover={{ scale: 1.05 }}
-                                        whileTap={{ scale: 0.95 }}
-                                        onClick={handleCopy}
-                                        className="flex items-center gap-3 px-8 py-3.5 rounded-full font-black text-[10px] md:text-xs uppercase tracking-[0.2em] transition-all shadow-xl bg-orange-950 text-white hover:shadow-orange-950/40"
-                                    >
-                                        {copied ? <Check size={18} /> : <Copy size={18} />}
-                                        {copied ? "Copied" : "Copy Verse"}
-                                    </motion.button>
-                                </div>
-
-                                {/* Mobile Close Icon (Top Right) - Optional, but keeping it simple as requested */}
+                            {/* Header */}
+                            <div className="px-6 py-4 border-b border-[#8b3d8b]/10 flex items-center justify-between bg-[#fffcf5]/90 backdrop-blur-md sticky top-0 z-20">
                                 <button
                                     onClick={() => setSelectedPad(null)}
-                                    className="md:hidden p-2 text-orange-950/40"
+                                    className="p-2 hover:bg-[#8b3d8b]/5 rounded-full text-[#5d4037] transition-colors"
                                 >
-                                    <X size={20} />
+                                    <ArrowLeft size={24} />
                                 </button>
+
+                                <div className="hidden md:flex flex-col text-center">
+                                    <h2 className="text-lg font-bold text-[#2a1b1b]">{selectedPad.title}</h2>
+                                </div>
+
+                                <div className="flex items-center gap-2">
+                                    <button
+                                        onClick={handleCopy}
+                                        className="p-2 hover:bg-[#8b3d8b]/5 rounded-full text-[#5d4037] transition-colors"
+                                        title="Copy text"
+                                    >
+                                        {copied ? <Check size={20} className="text-green-600" /> : <Copy size={20} />}
+                                    </button>
+                                </div>
                             </div>
 
-                            {/* Fullscreen Pro Content View with Smooth Scroll */}
-                            <div className="flex-1 overflow-y-auto px-6 md:px-32 lg:px-64 py-12 md:py-24 custom-scrollbar scroll-smooth bg-[url('https://www.transparenttextures.com/patterns/cream-paper.png')] relative">
-                                {/* Elegant Background Aura */}
-                                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-orange-50/10 blur-[120px] rounded-full pointer-events-none" />
-
+                            {/* Content */}
+                            <div className="flex-1 overflow-y-auto custom-scrollbar relative z-10 px-6 md:px-20 py-10 md:py-16">
                                 {isLoading ? (
-                                    <div className="h-full flex flex-col items-center justify-center space-y-12 relative z-10">
-                                        <motion.div
-                                            animate={{ scale: [1, 1.3, 1], rotate: 360 }}
-                                            transition={{ duration: 2, repeat: Infinity }}
-                                            className="w-32 h-32 bg-orange-50 rounded-full flex items-center justify-center text-orange-400"
-                                        >
-                                            <Sparkles size={64} />
-                                        </motion.div>
-                                        <p className="text-orange-950/40 font-serif italic text-4xl tracking-widest animate-pulse">Invoking sacred nectar...</p>
+                                    <div className="absolute inset-0 flex items-center justify-center">
+                                        <div className="flex flex-col items-center gap-4">
+                                            <motion.div
+                                                animate={{ rotate: 360 }}
+                                                transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+                                            >
+                                                <Sparkles className="text-[#8b3d8b]/40" size={48} />
+                                            </motion.div>
+                                            <p className="text-[#8b3d8b]/60 font-medium text-sm tracking-widest uppercase">Loading Verse...</p>
+                                        </div>
                                     </div>
                                 ) : (
                                     <motion.div
-                                        initial={{ opacity: 0, y: 20 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                        transition={{ duration: 0.8 }}
-                                        className="max-w-5xl mx-auto relative z-10"
+                                        initial={{ opacity: 0 }}
+                                        animate={{ opacity: 1 }}
+                                        transition={{ duration: 0.5 }}
+                                        className="max-w-2xl mx-auto"
                                     >
-                                        <div className="text-center font-serif leading-[1.8] md:leading-[2.2] text-orange-950 text-2xl md:text-3xl lg:text-4xl whitespace-pre-wrap select-all selection:bg-orange-100 selection:text-orange-950 transition-all font-medium drop-shadow-sm tracking-wide">
+                                        <div className="text-center mb-8 md:hidden">
+                                            <h2 className="text-2xl font-black text-[#2a1b1b] mb-2">{selectedPad.title}</h2>
+                                            <div className="w-12 h-1 bg-[#8b3d8b] mx-auto rounded-full opacity-20" />
+                                        </div>
+
+                                        <div className="text-lg md:text-xl leading-[1.8] md:leading-[2] text-[#2a1b1b] text-center font-medium whitespace-pre-wrap selection:bg-[#8b3d8b]/20">
                                             {padContent}
                                         </div>
 
-                                        <div className="mt-40 mb-24 flex flex-col items-center">
-                                            <div className="w-40 h-[1px] bg-gradient-to-r from-transparent via-orange-200 to-transparent mb-12" />
-                                            <motion.div
-                                                animate={{
-                                                    rotate: [0, 8, -8, 0],
-                                                    scale: [1, 1.1, 1]
-                                                }}
-                                                transition={{ duration: 6, repeat: Infinity }}
-                                            >
-                                                <Heart className="text-orange-950 opacity-[0.05]" size={140} />
-                                            </motion.div>
-                                            <p className="text-orange-950/30 font-serif italic text-4xl md:text-6xl tracking-[0.6em] mt-12 drop-shadow-sm">राधे राधे</p>
+                                        <div className="mt-16 pt-8 border-t border-[#8b3d8b]/10 text-center">
+                                            <p className="text-3xl font-serif text-[#8b3d8b]/20 mb-3">❋</p>
+                                            <p className="text-[#8b3d8b] font-bold uppercase tracking-[0.3em] text-[10px] opacity-60">Radhe Radhe</p>
                                         </div>
                                     </motion.div>
                                 )}
-                            </div>
-
-                            {/* Fullscreen Mobile Utility Bar - HIDDEN AS REQUESTED */}
-                            <div className="hidden lg:flex fixed bottom-12 right-12 flex flex-col gap-6">
-                                {/* This bar is now hidden on mobile/tablet to keep it clean */}
                             </div>
                         </motion.div>
                     </motion.div>
@@ -314,18 +318,14 @@ export default function Padawali() {
             <style jsx global>{`
                 .no-scrollbar::-webkit-scrollbar { display: none; }
                 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-                .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+                .custom-scrollbar::-webkit-scrollbar { width: 5px; }
                 .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
                 .custom-scrollbar::-webkit-scrollbar-thumb { 
-                    background: rgba(124, 45, 18, 0.1); 
+                    background: rgba(139, 61, 139, 0.2); 
                     border-radius: 10px; 
                 }
-                @keyframes shimmer {
-                    0% { transform: translateX(-100%); }
-                    100% { transform: translateX(100%); }
-                }
-                .animate-shimmer {
-                    animation: shimmer 3s infinite linear;
+                .custom-scrollbar::-webkit-scrollbar-thumb:hover { 
+                    background: rgba(139, 61, 139, 0.4); 
                 }
             `}</style>
         </div>
