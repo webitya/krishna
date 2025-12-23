@@ -68,7 +68,7 @@ export default function Footer() {
                                 <li>
                                     <Link href="/about-jai-jai" className="text-amber-100/70 hover:text-amber-300 transition-colors duration-300 flex items-center gap-2 group">
                                         <span className="w-1 h-1 bg-amber-400 rounded-full group-hover:w-2 transition-all duration-300" />
-                                        About Mandir
+                                        About Jai Jai Shri
                                     </Link>
                                 </li>
                                 <li>
