@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Clock, Sun, Moon, Sunrise, Sunset, Sparkles } from "lucide-react";
+import { Clock, Sun, Moon, Sunrise, Sunset, Sparkles, Instagram, ExternalLink } from "lucide-react";
 
 const sewaSchedule = [
     { sewa: "मंगला आरती", time: "प्रात: 5:30 बजे से 6:15 बजे तक", icon: Sunrise },
@@ -52,27 +52,30 @@ export default function AshtyamSewaSection() {
                     </motion.p>
                 </div>
 
-                {/* Schedule Table */}
+                {/* Structured Table */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.2 }}
-                    className="w-full bg-white/80 backdrop-blur-sm rounded-xl shadow-[0_4px_20px_-4px_rgba(255,182,193,0.3)] border border-pink-100 overflow-hidden ring-1 ring-pink-50"
+                    className="w-full max-w-5xl mx-auto bg-white/80 backdrop-blur-sm shadow-[0_4px_20px_-4px_rgba(255,182,193,0.3)] border border-pink-200 overflow-hidden ring-1 ring-pink-50 rounded-xl"
                 >
                     {/* Table Header */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 bg-gradient-to-r from-pink-600 to-rose-500 text-white p-3 md:p-4 shadow-md relative z-10">
-                        <div className="font-bold text-lg font-serif mb-1 md:mb-0 flex items-center gap-2">
+                    <div className="grid grid-cols-12 bg-gradient-to-r from-pink-600 to-rose-500 text-white text-sm md:text-base font-bold font-serif border-b border-pink-200">
+                        <div className="col-span-5 md:col-span-4 p-3 md:p-4 text-center border-r border-pink-400/30 flex items-center justify-center gap-2">
                             <span>सेवा/आरती का नाम</span>
                         </div>
-                        <div className="font-bold text-lg font-serif text-right md:text-left flex items-center md:justify-end gap-2">
+                        <div className="col-span-7 md:col-span-5 p-3 md:p-4 text-center border-r border-pink-400/30 flex items-center justify-center gap-2">
                             <Clock className="w-4 h-4 opacity-90" />
-                            समय (Time)
+                            <span>समय (Time)</span>
+                        </div>
+                        <div className="hidden md:flex col-span-3 p-3 md:p-4 text-center items-center justify-center gap-2">
+                            <span>दर्शन (Darshan)</span>
                         </div>
                     </div>
 
                     {/* Table Body */}
-                    <div className="divide-y divide-pink-50">
+                    <div className="divide-y divide-pink-100">
                         {sewaSchedule.map((item, index) => (
                             <motion.div
                                 key={index}
@@ -80,20 +83,37 @@ export default function AshtyamSewaSection() {
                                 whileInView={{ opacity: 1, x: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: 0.05 * index }}
-                                className="grid grid-cols-1 md:grid-cols-2 p-3 hover:bg-pink-50/60 transition-colors duration-300 group"
+                                className="grid grid-cols-12 hover:bg-pink-50/60 transition-colors duration-300 group items-stretch text-sm md:text-base"
                             >
-                                <div className="flex items-center gap-3 mb-1 md:mb-0">
-                                    <div className="w-8 h-8 rounded-full bg-pink-50 text-pink-600 flex items-center justify-center border border-pink-100 group-hover:bg-pink-600 group-hover:text-white group-hover:border-pink-600 transition-all duration-300 shadow-sm">
+                                {/* Service Name Column */}
+                                <div className="col-span-5 md:col-span-4 p-3 md:p-4 flex items-center justify-center md:justify-start gap-2 border-r border-pink-100">
+                                    <div className="shrink-0 w-8 h-8 rounded-full bg-pink-50 text-pink-600 flex items-center justify-center border border-pink-100 group-hover:bg-pink-600 group-hover:text-white group-hover:border-pink-600 transition-all duration-300 shadow-sm hidden sm:flex">
                                         <item.icon className="w-4 h-4" />
                                     </div>
-                                    <span className="text-base font-semibold text-pink-900 font-serif group-hover:text-pink-700 transition-colors">
+                                    <span className="font-semibold text-pink-900 font-serif group-hover:text-pink-700 transition-colors text-center md:text-left">
                                         {item.sewa}
                                     </span>
                                 </div>
-                                <div className="flex items-center md:justify-end text-right pl-11 md:pl-0">
-                                    <span className="text-sm md:text-base text-pink-800/80 font-medium bg-pink-50/50 px-3 py-1 rounded-md group-hover:bg-white group-hover:shadow-sm border border-transparent group-hover:border-pink-100 transition-all font-serif">
+
+                                {/* Time Column */}
+                                <div className="col-span-7 md:col-span-5 p-3 md:p-4 flex items-center justify-center border-r border-pink-100">
+                                    <span className="text-pink-800/80 font-medium font-serif text-center">
                                         {item.time}
                                     </span>
+                                </div>
+
+                                {/* Action Column (Desktop & Mobile Mixed) */}
+                                <div className="col-span-12 md:col-span-3 p-2 md:p-4 flex items-center justify-center bg-pink-50/30 md:bg-transparent border-t md:border-t-0 border-pink-100 md:border-l-0">
+                                    <a
+                                        href="https://www.instagram.com/shrihitradhavallabhlal/"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-gradient-to-r from-pink-500 to-rose-500 text-white rounded-lg text-xs md:text-sm font-medium hover:shadow-md hover:shadow-pink-200 transition-all transform hover:-translate-y-0.5 active:translate-y-0"
+                                    >
+                                        <Instagram className="w-3.5 h-3.5" />
+                                        दर्शन करें
+                                        <ExternalLink className="w-3 h-3 opacity-70" />
+                                    </a>
                                 </div>
                             </motion.div>
                         ))}
