@@ -4,64 +4,52 @@ import React, { useRef } from "react";
 import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-// Material UI Icons
-import AgricultureIcon from "@mui/icons-material/Agriculture";
-import SelfImprovementIcon from "@mui/icons-material/SelfImprovement";
-import WaterIcon from "@mui/icons-material/Water";
-import ParkIcon from "@mui/icons-material/Park";
-import VolunteerActivismIcon from "@mui/icons-material/VolunteerActivism";
-import TempleHinduIcon from "@mui/icons-material/TempleHindu";
-import MedicalServicesIcon from "@mui/icons-material/MedicalServices";
+import Image from "next/image";
+
+// Images are referenced directly from public folder
 
 const foundationItems = [
     {
         title: "गौ माता सेवा",
         subtitle: "Gau Seva & Donation",
-        icon: <AgricultureIcon sx={{ fontSize: 40 }} />,
+        image: "/foundation/गौ सेवा.jpg",
         bgColor: "bg-orange-50",
-        iconColor: "text-orange-600",
     },
     {
         title: "साधु सेवा",
         subtitle: "Sadhu Seva",
-        icon: <SelfImprovementIcon sx={{ fontSize: 40 }} />,
+        image: "/seva/साधु संत सेवा मनोरथ.webp",
         bgColor: "bg-amber-50",
-        iconColor: "text-amber-600",
     },
     {
         title: "यमुना मार्जन सेवा",
         subtitle: "Yamuna Ji Cleaning Service",
-        icon: <WaterIcon sx={{ fontSize: 40 }} />,
+        image: "/foundation/यमुना मार्जन सेवा.jpg",
         bgColor: "bg-blue-50",
-        iconColor: "text-blue-600",
     },
     {
         title: "वृक्षा रोपण",
         subtitle: "Tree Plantation",
-        icon: <ParkIcon sx={{ fontSize: 40 }} />,
+        image: "/foundation/वृक्षा रोपण.png",
         bgColor: "bg-green-50",
-        iconColor: "text-green-600",
     },
     {
         title: "वस्त्र वितरण",
         subtitle: "Cloth Distribution",
-        icon: <VolunteerActivismIcon sx={{ fontSize: 40 }} />,
+        image: "/foundation/वस्त्र वितरण सेवा.jpeg",
         bgColor: "bg-pink-50",
-        iconColor: "text-pink-600",
     },
     {
         title: "ब्रज 84 कोस यात्रा",
         subtitle: "Braj 84 kos Yatra",
-        icon: <TempleHinduIcon sx={{ fontSize: 40 }} />,
+        image: "/foundation/ब्रज चौरासी कोस यात्रा.jpg",
         bgColor: "bg-red-50",
-        iconColor: "text-red-600",
     },
     {
         title: "चिकित्सा शिविर",
         subtitle: "Medical Camp",
-        icon: <MedicalServicesIcon sx={{ fontSize: 40 }} />,
+        image: "/foundation/चिकित्सा शिविर.png",
         bgColor: "bg-cyan-50",
-        iconColor: "text-cyan-600",
     },
 ];
 
@@ -75,10 +63,14 @@ const FoundationCard = ({ item, index }) => (
         className="group/card bg-gray-50/50 hover:bg-white rounded-2xl p-4 md:p-6 flex flex-col items-center text-center transition-all duration-300 border border-gray-50 hover:border-purple-50 hover:shadow-sm h-full"
     >
         {/* Icon Container */}
-        <div
-            className={`${item.bgColor} ${item.iconColor} w-14 h-14 md:w-20 md:h-20 rounded-full flex items-center justify-center mb-3 md:mb-4 transition-transform duration-300 group-hover/card:scale-105`}
-        >
-            {React.cloneElement(item.icon, { sx: { fontSize: 24 } })}
+        {/* Image Container */}
+        <div className="relative w-20 h-20 md:w-28 md:h-28 mb-3 md:mb-4 rounded-full overflow-hidden shadow-md border-2 border-white group-hover/card:scale-110 transition-transform duration-500">
+            <Image
+                src={item.image}
+                alt={item.title}
+                fill
+                className="object-cover"
+            />
         </div>
 
         {/* Text Content */}
