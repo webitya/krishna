@@ -95,7 +95,7 @@ export default function HeroCarousel() {
     };
 
     return (
-        <section className="relative w-full h-screen max-h-[190px] md:max-h-none md:h-[calc(100vh-3.5rem)] overflow-hidden bg-white">
+        <section className="relative w-full h-screen max-h-[220px] md:max-h-none md:h-[calc(100vh-3.5rem)] overflow-hidden bg-white">
             {/* Main Carousel */}
             <div className="relative w-full h-full">
                 <AnimatePresence initial={false} custom={direction} mode="wait">

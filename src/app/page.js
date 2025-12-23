@@ -16,7 +16,7 @@ import ReelsSection from "@/components/ReelsSection";
 
 export default function Home() {
   return (
-    <div className="flex flex-col w-full bg-white text-black pt-16 md:pt-14">
+    <div className="flex flex-col w-full bg-white text-black pt-14 md:pt-14">
       {/* Hero Carousel Section */}
       <HeroCarousel />
 

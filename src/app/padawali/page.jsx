@@ -11,7 +11,8 @@ import {
     ChevronRight,
     Sparkles,
     Scroll,
-    Feather
+    Feather,
+    ChevronDown
 } from "lucide-react";
 
 // Metadata for all Padavali files
@@ -47,6 +48,7 @@ export default function Padawali() {
     const [padContent, setPadContent] = useState("");
     const [isLoading, setIsLoading] = useState(false);
     const [copied, setCopied] = useState(false);
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
     // Filtered data
     const filteredData = useMemo(() => {
@@ -129,9 +131,52 @@ export default function Padawali() {
                 </div>
             </div>
 
-            {/* Compact Category Navigation */}
+            {/* Compact Category Navigation - Responsive */}
             <div className="sticky top-4 z-40 mb-8 px-4">
-                <div className="max-w-fit mx-auto px-2 py-1.5 bg-white/90 backdrop-blur-xl border border-[#8b3d8b]/10 rounded-full shadow-lg shadow-[#8b3d8b]/5">
+                {/* Mobile Dropdown */}
+                <div className="md:hidden relative max-w-[280px] mx-auto z-50">
+                    <button
+                        onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                        className="w-full flex items-center justify-between px-5 py-3 bg-white/90 backdrop-blur-xl border border-[#8b3d8b]/10 rounded-2xl shadow-lg shadow-[#8b3d8b]/5 text-[#2a1b1b] font-bold text-xs uppercase tracking-widest active:scale-95 transition-all duration-200"
+                    >
+                        <span className="truncate">{selectedCategory}</span>
+                        <ChevronDown size={14} className={`text-[#8b3d8b] transition-transform duration-300 ${isDropdownOpen ? "rotate-180" : ""}`} />
+                    </button>
+
+                    <AnimatePresence>
+                        {isDropdownOpen && (
+                            <motion.div
+                                initial={{ opacity: 0, y: -10, scale: 0.95, transformOrigin: "top" }}
+                                animate={{ opacity: 1, y: 0, scale: 1 }}
+                                exit={{ opacity: 0, y: -10, scale: 0.95 }}
+                                transition={{ duration: 0.2, ease: "easeOut" }}
+                                className="absolute top-[calc(100%+8px)] left-0 right-0 bg-[#fffcf5]/95 backdrop-blur-xl border border-[#8b3d8b]/10 rounded-2xl shadow-xl overflow-hidden max-h-[60vh] overflow-y-auto custom-scrollbar"
+                            >
+                                <div className="p-1.5 space-y-1">
+                                    {categories.map((cat) => (
+                                        <button
+                                            key={cat}
+                                            onClick={() => {
+                                                setSelectedCategory(cat);
+                                                setIsDropdownOpen(false);
+                                            }}
+                                            className={`w-full text-left px-4 py-3 text-[10px] font-bold uppercase tracking-widest rounded-xl transition-all flex items-center justify-between ${selectedCategory === cat
+                                                    ? "bg-[#8b3d8b] text-white shadow-md"
+                                                    : "text-[#5d4037]/70 hover:bg-[#8b3d8b]/5 hover:text-[#8b3d8b]"
+                                                }`}
+                                        >
+                                            {cat}
+                                            {selectedCategory === cat && <Check size={14} className="text-white" />}
+                                        </button>
+                                    ))}
+                                </div>
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
+                </div>
+
+                {/* Desktop/Tablet Horizontal List */}
+                <div className="hidden md:block max-w-fit mx-auto px-2 py-1.5 bg-white/90 backdrop-blur-xl border border-[#8b3d8b]/10 rounded-full shadow-lg shadow-[#8b3d8b]/5">
                     <div className="flex items-center gap-1 overflow-x-auto no-scrollbar px-1">
                         {categories.map((cat) => (
                             <button

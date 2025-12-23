@@ -57,8 +57,8 @@ export default function Navbar() {
         <div className="container mx-auto px-4 relative z-10">
           <div className="flex items-center justify-between">
             {/* Logo Section */}
-            <Link href="/" className="flex items-center justify-center group py-2">
-              <div className="relative w-16 h-16 md:w-20 md:h-20 flex items-center justify-center">
+            <Link href="/" className="flex items-center justify-center group py-1">
+              <div className="relative w-12 h-12 md:w-20 md:h-20 flex items-center justify-center">
                 <div className="absolute inset-0 bg-amber-400/20 rounded-full blur-xl group-hover:bg-amber-400/30 transition-all duration-500" />
                 <Image
                   src="/logo.png"
@@ -112,7 +112,7 @@ export default function Navbar() {
 
             {/* Mobile Menu Button */}
             <button
-              className="lg:hidden bg-gradient-to-r from-amber-400 to-yellow-400 text-[#3E2723] p-2 rounded-lg shadow-[0_2px_10px_rgba(251,191,36,0.3)] hover:shadow-[0_4px_15px_rgba(251,191,36,0.5)] transition-all"
+              className="lg:hidden bg-gradient-to-r from-amber-400 to-yellow-400 text-[#3E2723] p-1.5 rounded-lg shadow-[0_2px_10px_rgba(251,191,36,0.3)] hover:shadow-[0_4px_15px_rgba(251,191,36,0.5)] transition-all"
               onClick={() => setIsMobileMenuOpen(true)}
             >
               <Menu size={20} strokeWidth={2.5} />
