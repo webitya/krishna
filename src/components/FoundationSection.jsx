@@ -56,31 +56,35 @@ const foundationItems = [
 // Reusable Card Component
 const FoundationCard = ({ item, index }) => (
     <motion.div
-        initial={{ opacity: 0, scale: 0.95 }}
-        whileInView={{ opacity: 1, scale: 1 }}
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.5, delay: index * 0.05 }}
-        className="group/card bg-gray-50/50 hover:bg-white rounded-2xl p-4 md:p-6 flex flex-col items-center text-center transition-all duration-300 border border-gray-50 hover:border-purple-50 hover:shadow-sm h-full"
+        transition={{ duration: 0.5, delay: index * 0.1 }}
+        className="group/card h-full"
     >
-        {/* Icon Container */}
-        {/* Image Container */}
-        <div className="relative w-20 h-20 md:w-28 md:h-28 mb-3 md:mb-4 rounded-full overflow-hidden shadow-md border-2 border-white group-hover/card:scale-110 transition-transform duration-500">
-            <Image
-                src={item.image}
-                alt={item.title}
-                fill
-                className="object-cover"
-            />
-        </div>
+        <div className={`relative h-full ${item.bgColor} border border-white/50 shadow-sm hover:shadow-md rounded-2xl p-4 flex flex-col items-center text-center transition-all duration-500 hover:-translate-y-1`}>
 
-        {/* Text Content */}
-        <div className="space-y-1">
-            <h3 className="text-sm md:text-lg font-bold text-gray-800 font-serif leading-tight">
-                {item.title}
-            </h3>
-            <p className="text-gray-400 text-[10px] md:text-sm font-medium">
-                {item.subtitle}
-            </p>
+            {/* Image Container */}
+            <div className="relative w-16 h-16 md:w-20 md:h-20 mb-3 rounded-full overflow-hidden border-2 border-white/80 shadow-sm group-hover/card:scale-105 transition-transform duration-500">
+                <Image
+                    src={item.image}
+                    alt={item.title}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 64px, 80px"
+                />
+            </div>
+
+            {/* Text Content */}
+            <div className="space-y-1 w-full">
+                <h3 className="text-sm md:text-base font-bold text-gray-900 font-serif leading-tight">
+                    {item.title}
+                </h3>
+
+                <p className="text-gray-600/80 text-[10px] md:text-xs font-medium tracking-wide">
+                    {item.subtitle}
+                </p>
+            </div>
         </div>
     </motion.div>
 );
@@ -100,12 +104,18 @@ export default function FoundationSection() {
     };
 
     return (
-        <section className="relative py-8 md:py-12 bg-white overflow-hidden">
+        <section className="relative py-12 md:py-20 bg-gradient-to-b from-white via-purple-50/30 to-white overflow-hidden">
+            {/* Background Decorations */}
+            <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+                <div className="absolute top-[10%] left-[-5%] w-[500px] h-[500px] bg-purple-200/20 rounded-full blur-[100px]" />
+                <div className="absolute bottom-[10%] right-[-5%] w-[500px] h-[500px] bg-orange-200/20 rounded-full blur-[100px]" />
+            </div>
+
             <div className="container mx-auto px-4 md:px-8 relative z-10">
                 {/* Header Section */}
-                <div className="text-center mb-8 md:mb-10">
+                <div className="text-center mb-12 md:mb-16">
                     <motion.div
-                        initial={{ opacity: 0, y: 15 }}
+                        initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         className="flex flex-col items-center"
@@ -131,16 +141,16 @@ export default function FoundationSection() {
                     {/* Navigation Buttons */}
                     <button
                         onClick={() => scroll("left")}
-                        className="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-8 h-8 bg-gray-50 hover:bg-gray-100 text-gray-500 rounded-full flex items-center justify-center transition-all border border-gray-100 shadow-sm flex active:scale-95"
+                        className="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-12 h-12 bg-white/80 hover:bg-white backdrop-blur-md text-gray-700 hover:text-[#8b3d8b] rounded-full flex items-center justify-center transition-all border border-purple-100 shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:shadow-lg active:scale-95 group/btn"
                     >
-                        <ChevronLeft size={18} />
+                        <ChevronLeft size={24} className="group-hover/btn:-translate-x-0.5 transition-transform" />
                     </button>
 
                     <button
                         onClick={() => scroll("right")}
-                        className="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-8 h-8 bg-gray-50 hover:bg-gray-100 text-gray-500 rounded-full flex items-center justify-center transition-all border border-gray-100 shadow-sm flex active:scale-95"
+                        className="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-12 h-12 bg-white/80 hover:bg-white backdrop-blur-md text-gray-700 hover:text-[#8b3d8b] rounded-full flex items-center justify-center transition-all border border-purple-100 shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:shadow-lg active:scale-95 group/btn"
                     >
-                        <ChevronRight size={18} />
+                        <ChevronRight size={24} className="group-hover/btn:translate-x-0.5 transition-transform" />
                     </button>
 
                     {/* Scrollable Area */}
@@ -152,7 +162,7 @@ export default function FoundationSection() {
                         {foundationItems.map((item, index) => (
                             <div
                                 key={index}
-                                className="flex-shrink-0 w-[200px] md:w-[220px] snap-center pt-1"
+                                className="flex-shrink-0 w-[160px] md:w-[200px] snap-center pt-4 pb-8 px-2"
                             >
                                 <FoundationCard item={item} index={index} />
                             </div>
