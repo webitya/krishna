@@ -46,7 +46,7 @@ export default function AshtyamSewaSection() {
                         transition={{ delay: 0.1 }}
                         className="text-sm md:text-base text-pink-900/70 leading-relaxed font-serif max-w-2xl mx-auto"
                     >
-                        श्री हित राधावल्लभ लाल जू मंदिर विश्व का एकमात्र मंदिर है जहाँ नित्य अष्ट पहर अष्टयाम होती है।
+                        श्री हित राधावल्लभ लाल जू मंदिर विश्व का एकमात्र मंदिर है जहाँ नित्य अष्ट पहर अष्टयाम सेवा होती है।
                         <br className="hidden md:block" />
                         श्री राधावल्लभ लाल जू के 7 आरती एवं 5 भोग नित्य होती है।
                     </motion.p>
