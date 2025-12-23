@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { BookOpen, Download, Eye, Library, Search } from "lucide-react";
 
@@ -10,56 +11,64 @@ const books = [
         desc: "The fundamental scripture of the Radhavallabh Sampradaya, containing 84 pads of divine love.",
         author: "Shri Hita Harivansh Mahaprabhu",
         file: "/hit sahitya/Hit Chaurasi ji.pdf",
-        category: "Primary Scripture"
+        category: "Primary Scripture",
+        image: "/hit sahitya/1.jpeg"
     },
     {
         title: "Ashtyam Sewa Padawali",
         desc: "Sacred hymns describing the eight-fold daily divine services to the deity.",
         author: "Various Sahacharis",
         file: "/hit sahitya/Ashtyam Sewa Padawali.pdf",
-        category: "Sewa Paddhati"
+        category: "Sewa Paddhati",
+        image: "/hit sahitya/2.jpeg"
     },
     {
         title: "Sewak Vani",
         desc: "The divine teachings and experiences of Shri Damodar Das Ji (Sewak Ji).",
         author: "Shri Damodar Das Ji",
         file: "/hit sahitya/Sewak Vani.pdf",
-        category: "Vani Sahitya"
+        category: "Vani Sahitya",
+        image: "/hit sahitya/3.jpeg"
     },
     {
         title: "Shrihit Mangal Gaan",
         desc: "A collection of auspicious songs and prayers for divine celebrations.",
         author: "Sampradayik Saints",
         file: "/hit sahitya/Shrihit Mangal Gaan.pdf",
-        category: "Devotional Songs"
+        category: "Devotional Songs",
+        image: "/hit sahitya/4.jpeg"
     },
     {
         title: "Vrindavan Satlila",
         desc: "A poetic description of the hundred divine pastimes of Vrindavan.",
         author: "Shri Hita Harivansh",
         file: "/hit sahitya/Vrindavan Satlila.pdf",
-        category: "Lila Sahitya"
+        category: "Lila Sahitya",
+        image: "/hit sahitya/5.jpeg"
     },
     {
         title: "Vrindavan Dham Mandal",
         desc: "Explanations and descriptions of the sacred geography of Vrindavan.",
         author: "Saints of Braj",
         file: "/hit sahitya/Vrindavan dham ko mandal.pdf",
-        category: "Dham Mahima"
+        category: "Dham Mahima",
+        image: "/hit sahitya/6.jpeg"
     },
     {
         title: "Yamunashtak",
         desc: "Eight verses glorifying the sacred Yamuna River, the life-force of Braj.",
         author: "Various Acharyas",
         file: "/hit sahitya/Yamunashtak.pdf",
-        category: "Stotra"
+        category: "Stotra",
+        image: "/hit sahitya/7.jpeg"
     },
     {
         title: "Utsav Patrika 25-26",
         desc: "The official calendar and guide for temple festivals for the upcoming year.",
         author: "Mandir Management",
         file: "/hit sahitya/Utsav patrika -25-26.pdf",
-        category: "Almanac"
+        category: "Almanac",
+        image: "/hit sahitya/8.jpeg"
     },
 ];
 
@@ -132,7 +141,7 @@ export default function HitShahitya() {
                     variants={container}
                     initial="hidden"
                     animate="show"
-                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-5"
+                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
                 >
                     <AnimatePresence mode="popLayout">
                         {filteredBooks.map((book) => (
@@ -143,46 +152,58 @@ export default function HitShahitya() {
                                 initial="hidden"
                                 animate="show"
                                 exit={{ opacity: 0, scale: 0.95 }}
-                                className="group relative bg-white rounded-2xl p-5 border border-gray-50 shadow-sm hover:shadow-xl hover:shadow-[#8b3d8b]/5 transition-all duration-300 flex flex-col h-full"
+                                className="group relative bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl hover:shadow-[#8b3d8b]/10 transition-all duration-300 flex flex-col h-full"
                             >
-                                <div className="mb-4 flex justify-between items-start">
-                                    <span className="px-2 py-1 bg-gray-50 text-gray-400 text-[9px] font-bold rounded-md border border-gray-100 group-hover:text-[#8b3d8b] transition-colors">
-                                        {book.category}
-                                    </span>
-                                    <div className="w-8 h-8 rounded-lg bg-[#8b3d8b]/5 flex items-center justify-center text-[#8b3d8b]">
-                                        <BookOpen size={16} />
+                                {/* Image Section */}
+                                <div className="relative aspect-[4/5] w-full overflow-hidden bg-gray-100">
+                                    <Image
+                                        src={book.image}
+                                        alt={book.title}
+                                        fill
+                                        className="object-cover group-hover:scale-105 transition-transform duration-500"
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-60" />
+                                    <div className="absolute top-3 right-3">
+                                        <div className="w-8 h-8 rounded-lg bg-white/20 backdrop-blur-md flex items-center justify-center text-white border border-white/30">
+                                            <BookOpen size={16} />
+                                        </div>
+                                    </div>
+                                    <div className="absolute bottom-3 left-3">
+                                        <span className="px-2 py-1 bg-white/90 backdrop-blur-md text-[#8b3d8b] text-[10px] font-bold rounded-md shadow-sm">
+                                            {book.category}
+                                        </span>
                                     </div>
                                 </div>
 
-                                <div className="flex-1">
-                                    <h3 className="text-lg font-serif font-bold text-black mb-1 leading-snug group-hover:text-[#8b3d8b] transition-colors">
+                                <div className="p-5 flex-1 flex flex-col">
+                                    <h3 className="text-lg font-serif font-bold text-black mb-1 leading-snug group-hover:text-[#8b3d8b] transition-colors line-clamp-1">
                                         {book.title}
                                     </h3>
-                                    <p className="text-[#8b3d8b] text-[9px] font-bold uppercase tracking-wider mb-2 opacity-60">
+                                    <p className="text-[#8b3d8b] text-[10px] font-bold uppercase tracking-wider mb-2 opacity-60">
                                         {book.author}
                                     </p>
-                                    <p className="text-gray-400 text-xs leading-relaxed line-clamp-2">
+                                    <p className="text-gray-400 text-xs leading-relaxed line-clamp-3 mb-4 flex-1">
                                         {book.desc}
                                     </p>
-                                </div>
 
-                                <div className="flex gap-2 mt-5">
-                                    <a
-                                        href={book.file}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="flex-1 py-2 bg-[#8b3d8b] text-white rounded-lg flex items-center justify-center gap-1.5 text-xs font-bold hover:bg-black transition-all shadow-lg shadow-[#8b3d8b]/10"
-                                    >
-                                        <Eye size={14} />
-                                        Read
-                                    </a>
-                                    <a
-                                        href={book.file}
-                                        download
-                                        className="px-3 py-2 bg-gray-50 text-gray-400 rounded-lg hover:bg-[#8b3d8b]/5 hover:text-[#8b3d8b] transition-all border border-transparent hover:border-[#8b3d8b]/10"
-                                    >
-                                        <Download size={14} />
-                                    </a>
+                                    <div className="flex gap-2 mt-auto">
+                                        <a
+                                            href={book.file}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="flex-1 py-2 bg-[#8b3d8b] text-white rounded-lg flex items-center justify-center gap-1.5 text-xs font-bold hover:bg-black transition-all shadow-lg shadow-[#8b3d8b]/10"
+                                        >
+                                            <Eye size={14} />
+                                            Read
+                                        </a>
+                                        <a
+                                            href={book.file}
+                                            download
+                                            className="px-3 py-2 bg-gray-50 text-gray-400 rounded-lg hover:bg-[#8b3d8b]/5 hover:text-[#8b3d8b] transition-all border border-gray-100 hover:border-[#8b3d8b]/10"
+                                        >
+                                            <Download size={14} />
+                                        </a>
+                                    </div>
                                 </div>
                             </motion.div>
                         ))}

@@ -72,7 +72,7 @@ export default function Contact() {
                             {[
                                 { icon: MapPin, label: "Visit Us", val: "Shri Dham Vrindavan, Mathura,\nUP - 281121" },
                                 { icon: Phone, label: "Call Us", val: "+91 81681 00515", link: "tel:+918168100515" },
-                                { icon: Mail, label: "Email Us", val: "contact@brahithsharnam.org", link: "mailto:contact@brahithsharnam.org" }
+                                { icon: Mail, label: "Email Us", val: "shrihitradhavallabhlal@gmail.com", link: "mailto:shrihitradhavallabhlal@gmail.com" }
                             ].map((item, idx) => (
                                 <div
                                     key={idx}

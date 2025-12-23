@@ -99,14 +99,7 @@ export default function Padawali() {
                         Padavali Library
                     </motion.h1>
 
-                    <motion.p
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.2 }}
-                        className="text-sm md:text-lg font-black text-orange-900/60 uppercase tracking-[0.4em] mb-8 px-4"
-                    >
-                        ॥ श्री राधावल्लभ विजयतेतराम ॥
-                    </motion.p>
+                   
 
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -173,7 +166,7 @@ export default function Padawali() {
 
                                     <h3 className="text-xl md:text-2xl font-serif font-black text-orange-950 truncate whitespace-nowrap w-full py-4 ">
                                         {item.title}
-                                        <Music className="inline-block ml-2 text-orange-300" size={18} />
+                                       
                                     </h3>
 
                                     <p className="text-[10px] text-orange-900/30 font-bold uppercase tracking-widest mb-8 truncate w-full">

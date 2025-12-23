@@ -37,7 +37,7 @@ export default function PrivacyPolicy() {
 
                         <section>
                             <h2 className="text-2xl font-bold text-black mb-4">5. Contact Us</h2>
-                            <p>If you have any questions about this Privacy Policy, please contact us at contact@brahithsharnam.org.</p>
+                            <p>If you have any questions about this Privacy Policy, please contact us at shrihitradhavallabhlal@gmail.com.</p>
                         </section>
                     </div>
                 </motion.div>

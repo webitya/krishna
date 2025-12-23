@@ -133,8 +133,8 @@ export default function Footer() {
                                 </li>
                                 <li className="flex items-center gap-3">
                                     <Mail size={16} className="text-amber-400 flex-shrink-0" />
-                                    <a href="mailto:contact@brahithsharnam.org" className="text-amber-100/70 hover:text-amber-300 transition-colors">
-                                        contact@brahithsharnam.org
+                                    <a href="mailto:shrihitradhavallabhlal@gmail.com" className="text-amber-100/70 hover:text-amber-300 transition-colors">
+                                        shrihitradhavallabhlal@gmail.com
                                     </a>
                                 </li>
                                 <li className="flex items-center gap-3">
