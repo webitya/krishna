@@ -14,42 +14,63 @@ const foundationItems = [
         subtitle: "Gau Seva & Donation",
         image: "/foundation/गौ सेवा.jpg",
         bgColor: "bg-orange-50",
+        gradient: "from-orange-50 to-orange-100/40",
+        borderColor: "hover:border-orange-200",
+        shadowColor: "hover:shadow-orange-100"
     },
     {
         title: "साधु सेवा",
         subtitle: "Sadhu Seva",
         image: "/seva/साधु संत सेवा मनोरथ.webp",
         bgColor: "bg-amber-50",
+        gradient: "from-amber-50 to-amber-100/40",
+        borderColor: "hover:border-amber-200",
+        shadowColor: "hover:shadow-amber-100"
     },
     {
         title: "यमुना मार्जन सेवा",
         subtitle: "Yamuna Ji Cleaning Seva",
         image: "/foundation/यमुना मार्जन सेवा.jpg",
         bgColor: "bg-blue-50",
+        gradient: "from-blue-50 to-blue-100/40",
+        borderColor: "hover:border-blue-200",
+        shadowColor: "hover:shadow-blue-100"
     },
     {
         title: "वृक्षा रोपण",
         subtitle: "Tree Plantation",
         image: "/foundation/वृक्षा रोपण.png",
         bgColor: "bg-green-50",
+        gradient: "from-green-50 to-green-100/40",
+        borderColor: "hover:border-green-200",
+        shadowColor: "hover:shadow-green-100"
     },
     {
         title: "वस्त्र वितरण",
         subtitle: "Cloth Distribution",
         image: "/foundation/वस्त्र वितरण सेवा.jpeg",
         bgColor: "bg-pink-50",
+        gradient: "from-pink-50 to-pink-100/40",
+        borderColor: "hover:border-pink-200",
+        shadowColor: "hover:shadow-pink-100"
     },
     {
         title: "ब्रज 84 कोस यात्रा",
         subtitle: "Braj 84 kos Yatra",
         image: "/foundation/ब्रज चौरासी कोस यात्रा.jpg",
         bgColor: "bg-red-50",
+        gradient: "from-red-50 to-red-100/40",
+        borderColor: "hover:border-red-200",
+        shadowColor: "hover:shadow-red-100"
     },
     {
         title: "चिकित्सा शिविर",
         subtitle: "Medical Camp",
         image: "/foundation/चिकित्सा शिविर.png",
         bgColor: "bg-cyan-50",
+        gradient: "from-cyan-50 to-cyan-100/40",
+        borderColor: "hover:border-cyan-200",
+        shadowColor: "hover:shadow-cyan-100"
     },
 ];
 
@@ -62,28 +83,35 @@ const FoundationCard = ({ item, index }) => (
         transition={{ duration: 0.5, delay: index * 0.1 }}
         className="group/card h-full"
     >
-        <div className={`relative h-full ${item.bgColor} border border-white/50 shadow-sm hover:shadow-md rounded-2xl p-4 flex flex-col items-center text-center transition-all duration-500 hover:-translate-y-1`}>
+        <div className={`relative h-full bg-gradient-to-br ${item.gradient} border border-white/60 ${item.borderColor} shadow-sm hover:shadow-lg ${item.shadowColor} rounded-3xl p-5 flex flex-col items-center text-center transition-all duration-500 hover:-translate-y-2 backdrop-blur-sm`}>
 
             {/* Image Container */}
-            <div className="relative w-16 h-16 md:w-20 md:h-20 mb-3 rounded-full overflow-hidden border-2 border-white/80 shadow-sm group-hover/card:scale-105 transition-transform duration-500">
-                <Image
-                    src={item.image}
-                    alt={item.title}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 64px, 80px"
-                />
+            <div className="relative w-16 h-16 md:w-20 md:h-20 mb-4 rounded-full p-1 bg-white/40 shadow-inner group-hover/card:scale-105 transition-transform duration-500">
+                <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-white shadow-sm">
+                    <Image
+                        src={item.image}
+                        alt={item.title}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 64px, 80px"
+                    />
+                </div>
             </div>
 
             {/* Text Content */}
-            <div className="space-y-1 w-full">
-                <h3 className="text-sm md:text-base font-bold text-gray-900 font-serif leading-tight">
+            <div className="space-y-1.5 w-full relative z-10">
+                <h3 className="text-sm md:text-base font-bold text-gray-900 font-serif leading-tight group-hover/card:text-[#8b3d8b] transition-colors">
                     {item.title}
                 </h3>
 
-                <p className="text-gray-600/80 text-[10px] md:text-xs font-medium tracking-wide">
+                <p className="text-gray-600/90 text-[10px] md:text-xs font-medium tracking-wide uppercase">
                     {item.subtitle}
                 </p>
+            </div>
+
+            {/* Hover Indicator */}
+            <div className="absolute bottom-3 opacity-0 group-hover/card:opacity-100 transition-all duration-500 transform translate-y-2 group-hover/card:translate-y-0">
+                <div className="w-1 h-1 rounded-full bg-gray-400/50" />
             </div>
         </div>
     </motion.div>
