@@ -84,9 +84,9 @@ const UtsavCard = ({ utsav, index, subIndex = 0 }) => (
         transition={{ duration: 0.5, delay: (index * 0.1) + (subIndex * 0.1) }}
         className="group/card w-full"
     >
-        <div className="relative flex items-center gap-2 md:gap-3 bg-white/95 backdrop-blur-md p-2 md:p-3 rounded-xl md:rounded-2xl border border-white/60 hover:border-amber-400/50 transition-all duration-500 hover:bg-white shadow-[0_4px_15px_rgba(0,0,0,0.05)] h-20 md:h-28 hover:-translate-y-1">
+        <div className="relative flex flex-col md:flex-row items-center gap-2 md:gap-3 bg-white/95 backdrop-blur-md p-2 md:p-3 rounded-xl md:rounded-2xl border border-white/60 hover:border-amber-400/50 transition-all duration-500 hover:bg-white shadow-[0_4px_15px_rgba(0,0,0,0.05)] h-auto md:h-28 hover:-translate-y-1">
             {/* Image Container */}
-            <div className="relative w-12 h-12 md:w-20 md:h-20 flex-shrink-0 overflow-hidden rounded-lg md:rounded-xl shadow-sm border border-orange-100">
+            <div className="relative w-full aspect-square md:w-20 md:h-20 md:aspect-auto flex-shrink-0 overflow-hidden rounded-lg md:rounded-xl shadow-sm border border-orange-100">
                 <Image
                     src={utsav.image}
                     alt={utsav.title}
@@ -97,7 +97,7 @@ const UtsavCard = ({ utsav, index, subIndex = 0 }) => (
             </div>
 
             {/* Text Content */}
-            <div className="flex flex-col justify-center min-w-0 pr-1">
+            <div className="flex flex-col justify-center items-center md:items-start min-w-0 pr-0 md:pr-1 pt-1 md:pt-0 text-center md:text-left">
                 <h3 className="text-[11px] md:text-base font-serif font-bold text-orange-900 mb-0.5 leading-tight line-clamp-2">
                     {utsav.title}
                 </h3>
